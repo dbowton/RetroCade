@@ -46,6 +46,12 @@ async function getUser(username)
 	return users[0];
 }
 
+async function getUserByEmail(email)
+{
+	const users = await UserModel.find({email: email});
+	return users[0];
+}
+
 async function validateUserLogin(username, password)
 {
 	const user = await getUser(username);
@@ -55,5 +61,6 @@ async function validateUserLogin(username, password)
 module.exports = {
 	addUser,
 	getUser,
+	getUserByEmail,
 	validateUserLogin
 };
