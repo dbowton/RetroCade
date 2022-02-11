@@ -71,6 +71,10 @@ app.post("/register", async function(req, res){
 	res.redirect("/login");
 });
 
+app.get("/homepageTRIAL", async function(req, res){
+	res.render("homepageTRIAL");
+});
+
 // 404 error page
 app.use(function(req, res){
 	res.status(404).render('error404', {page: req.url});
