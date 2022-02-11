@@ -1,121 +1,175 @@
 a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-  }
-  
-  /* Provide sufficient contrast against white background */
-  a {
-    color: #0366d6;
-  }
-  
-  .btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-  }
-  
-  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-  }
-  
-  /* Sticky footer styles
-  -------------------------------------------------- */
-  html {
-    font-size: 14px;
-  }
-  @media (min-width: 768px) {
-    html {
-      font-size: 16px;
-    }
-  }
-  
-  .border-top {
-    border-top: 1px solid #e5e5e5;
-  }
-  .border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  
-  .box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-  }
-  
-  button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-  }
-  
-  /* Sticky footer styles
-  -------------------------------------------------- */
-  html {
-    position: relative;
-    min-height: 100%;
-  }
-  
-  body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-  }
-  .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-  }
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
 
-  /* further project css formatting
-  ----------------------------------- */
-  .center{
-    display: flex;
-    justify-content:center;
-    flex-direction:column;
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+/* further project css formatting
+----------------------------------- */
+.center{
+  display: flex;
+  justify-content:center;
+  flex-direction:column;
 }
 
 .imgSize {
-    height: 240px;
-    width: 185px;
+  height: 240px;
+  width: 185px;
 }
 
 .title {
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .background {
-    background-image: url("pics/background.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url("pics/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .centerBar {
-    padding: 14rem 0rem;
+  padding: 14rem 0rem;
 }
 
 #cardPadding{
-    margin: 1rem 0rem;
+  margin: 1rem 0rem;
 }
 
 .btnSize {
-    margin: 3% 2%;
-    height: 50px;
-    width: 100px;
-    border-radius: 5%;
+  margin: 3% 2%;
+  height: 50px;
+  width: 100px;
+  border-radius: 5%;
 }
 
 .inputForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
 }
 
 .logo{
-    height: 50px;
+  height: 50px;
+}
+/* page formatting for project
+------------------------------------------ */
+.center{
+  display: flex;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.imgSize {
+  height: 240px;
+  width: 185px;
+}
+
+.title {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.background {
+  background-image: url("pics/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.centerBar {
+  padding: 14rem 0rem;
+}
+
+#cardPadding{
+  margin: 1rem 0rem;
+}
+
+.btnSize {
+  margin: 3% 2%;
+  height: 50px;
+  width: 100px;
+  border-radius: 5%;
+}
+
+.inputForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
+}
+
+.logo{
+  height: 50px;
 }
