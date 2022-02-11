@@ -6,15 +6,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- //<title>@ViewData["Title"] - WebApplication1</title>// -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/GamePartialView.css" />
+    <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="/css/siteColors.css" />
+    <link rel="stylesheet" href="/css/site.css" />
         
 </head>
 
 <body class="background">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 indexBar">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 indexBar indexBar">
             <div class="container">
 
                 <a class="navbar-brand" ><img class="logo" src="~/pics/logo.png" />RetroCade</a>
@@ -41,14 +41,14 @@
     <div class="container">
         <main role="main" class="pb-3">
             <!-- @RenderBody() -->
-            <form>
+            <form action="register" method="post" class="inputForm">
                 <div>
                     <input required name="username" placeholder="UserName"/>
+                    <input required name="password" placeholder="Password"/>
                     <input required name="email" placeholder="Email"/>
-                    <input required name="password1" placeholder="Password"/>
-                    <input required name="password2" placeholder="Re-enter Password"/>
+                    <input required name="confpassword" placeholder="confirm Password"/>
                 </div>
-                <button type="submit">Log In</button>
+                <button type="submit" class="btnSize btnColor">Log In</button>
             </form>
         </main>
     </div>
@@ -56,12 +56,13 @@
     <footer class="footer indexBar">
         <div class="container">
             <img class="logo" src="~/css/pics/logo.png" />
+            <dive class="titleColor">RetroCade&copy; 2022 OnlineLibrary</dive>
             <!-- AGomezTECH&copy;  @DateTime.Now.Year - GameLibrary -->
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script> -->
     <!-- @await RenderSectionAsync("Scripts", required: false) -->
 </body>
 </html>
