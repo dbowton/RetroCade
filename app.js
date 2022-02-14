@@ -40,6 +40,13 @@ app.post("/login", async function(req, res){
 	const username = req.body.username;
 	const password = req.body.password;
 
+	if(await users.checkSession(username))
+	{
+		console.log("found session");
+		res.redirect("/home");
+		return;
+	}
+
 	const hashedPassword = await hash(password);
 
 	if(await users.validateUserLogin(username, hashedPassword))
