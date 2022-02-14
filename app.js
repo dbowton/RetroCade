@@ -40,16 +40,11 @@ app.post("/login", async function(req, res){
 	const username = req.body.username;
 	const password = req.body.password;
 
-	if(await users.checkSession(req.cookies.username))
-	{
-		res.redirect("/home");
-		return;
-	}
-
 	const hashedPassword = await hash(password);
 
 	if(await users.validateUserLogin(username, hashedPassword))
 	{
+		console.log("loging in user");
 		await users.startSession(username);
 		res.cookie("username", username);
 		res.redirect("/home");
