@@ -42,7 +42,6 @@ app.post("/login", async function(req, res){
 
 	if(await users.checkSession(username))
 	{
-		console.log("found session");
 		res.redirect("/home");
 		return;
 	}
@@ -51,7 +50,6 @@ app.post("/login", async function(req, res){
 
 	if(await users.validateUserLogin(username, hashedPassword))
 	{
-		console.log("loging in user");
 		await users.startSession(username);
 		res.cookie("username", username);
 		res.redirect("/home");

@@ -84,7 +84,14 @@ async function checkSession(username)
 		{
 			let timeoutTime = new Date(Date.now());
 			timeoutTime.setSeconds(timeoutTime.getSeconds() + 20000);
-			session.timeout = timeoutTime;
+
+			mongoose.connection.collection("sessions").updateOne(
+				{username: username},
+				{$set: {timeout: timeoutTime}},
+				function(err){
+					if(err) console.log(err);
+				}
+			);
 		}
 	}
 	else
