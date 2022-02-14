@@ -48,7 +48,7 @@ app.post("/login", async function(req, res){
 
 	const hashedPassword = await hash(password);
 
-	if(users.validateUserLogin(username, hashedPassword))
+	if(await users.validateUserLogin(username, hashedPassword))
 	{
 		await users.startSession(username);
 		res.cookie("username", username);

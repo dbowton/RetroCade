@@ -73,18 +73,15 @@ async function removeSession(username)
 async function checkSession(username)
 {
 	const session = await SessionModel.find({username: username});
-	console.log(session);
 	if(!!session.length)
 	{
 		if(session.timeout > Date.now())
 		{
-			console.log("timeout");
 			removeSession(username);
 			return false;
 		}
 		else
 		{
-			console.log("renewing session");
 			let timeoutTime = new Date(Date.now());
 			timeoutTime.setSeconds(timeoutTime.getSeconds() + 20000);
 			session.timeout = timeoutTime;
@@ -92,7 +89,6 @@ async function checkSession(username)
 	}
 	else
 	{
-		console.log("no session found");
 		return false;
 	}
 
