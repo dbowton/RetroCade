@@ -1,8 +1,8 @@
 {
-    "games":[
-        {
-            "name":"supperMonkeyBall",
-            "file":"supperMonkeyBall.ejs"
-        }
-    ]
+	"games":[
+		{
+			"name":"supperMonkeyBall",
+			"file":"supperMonkeyBall.ejs"
+		}
+	]
 }
