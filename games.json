@@ -1,0 +1,8 @@
+{
+    "games":[
+        {
+            "name":"supperMonkeyBall",
+            "file":"supperMonkeyBall.ejs"
+        }
+    ]
+}

@@ -2,6 +2,13 @@ const express = require("express");
 const cookieParser = require('cookie-parser');
 const users = require("./users");
 const crypto = require("crypto");
+const fs = require("fs");
+
+function readFile(filename)
+{
+	return JSON.parse(fs.existsSync(filename) ?
+	 fs.readFileSync(filename).toString() : "{}");
+}
 
 async function hash(text)
 {
@@ -118,6 +125,18 @@ app.post("/setGameData/:game", redirectLogin, async function(req, res){
 	const data = await req.body.data;
 	users.setGameData(username, game, data);
 	res.send("success");
+});
+
+app.get("/gameList", redirectLogin, async function(req, res){
+	const gameData = readFile("games.json");
+	res.send(gameData);
+});
+
+app.get("/games/:game", redirectLogin, async function(req, res){
+	const gameName = req.params.game;
+	const gameData = readFile("games.json");
+	const game = gameData.games.find(e=>e.name==gameName);
+	res.render("games/"+game.file);
 });
 
 app.get("/library", redirectLogin, async function(req, res){
