@@ -85,7 +85,7 @@ async function checkSession(username)
 			let timeoutTime = new Date(Date.now());
 			timeoutTime.setSeconds(timeoutTime.getSeconds() + 20000);
 
-			mongoose.connection.collection("sessions").updateOne(
+			SessionModel.updateOne(
 				{username: username},
 				{$set: {timeout: timeoutTime}},
 				function(err){
@@ -122,6 +122,28 @@ async function validateUserLogin(username, password)
 	return password == user.password;
 }
 
+async function getGameData(username, game)
+{
+	let gameInfo = (await UserModel.findOne({username:username})).gameInfo.find(e=>e.game==game);
+	if(gameInfo)
+		return gameInfo.data;
+	return undefined;
+}
+
+async function setGameData(username, game, data)
+{
+	UserModel.findOne({username:username}).then(async function(result){
+		let gameFound = await getGameData(username, game);
+		if(gameFound == undefined)
+			result.gameInfo.push({game:game, data:data});
+		else
+			result.gameInfo.find(e=>e.game==game).data = data;
+		
+		result.save();
+
+	});
+}
+
 module.exports = {
 	startSession,
 	removeSession,
@@ -129,5 +151,7 @@ module.exports = {
 	addUser,
 	getUser,
 	getUserByEmail,
-	validateUserLogin
+	validateUserLogin,
+	getGameData,
+	setGameData
 };

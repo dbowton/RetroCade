@@ -14,7 +14,6 @@ async function redirectLogin(req, res, next)
 		next();
 	else
 		res.redirect("/login");
-	
 }
 
 const port = 3000;
@@ -32,7 +31,11 @@ app.use("/css", express.static("css"));
 app.use("/js", express.static("js"));
 app.use("/images", express.static("images"));
 
-app.get(["/", "/login"], async function(req, res){
+app.get(["/", "/home"], redirectLogin, async function(req, res){
+	res.render("home");
+});
+
+app.get("/login", async function(req, res){
 	res.render("login");
 });
 
@@ -42,6 +45,8 @@ app.post("/login", async function(req, res){
 
 	if(await users.checkSession(username))
 	{
+		if(!req.cookies.username || req.cookies.username != username)
+			res.cookie("username", username);
 		res.redirect("/home");
 		return;
 	}
@@ -95,8 +100,28 @@ app.post("/register", async function(req, res){
 	res.redirect("/home");
 });
 
-app.get("/home", redirectLogin, async function(req, res){
-	res.render("home");
+// get user data
+app.get("/userData", redirectLogin, async function(req, res){
+	const username = req.cookies.username;
+	const user = await users.getUser(username);
+	res.send(user);
+});
+
+// get user data for game
+app.get("/getGameData/:game", redirectLogin, async function(req, res){
+	const username = req.cookies.username;
+	const game = req.params.game;
+	const gameData = await users.getGameData(username, game);
+	res.send(gameData);
+});
+
+// set user data for game
+app.post("/setGameData/:game", redirectLogin, async function(req, res){
+	const username = req.cookies.username;
+	const game = req.params.game;
+	const data = await req.body.data;
+	users.setGameData(username, game, data);
+	res.send("success");
 });
 
 app.get("/library", redirectLogin, async function(req, res){
@@ -105,5 +130,5 @@ app.get("/library", redirectLogin, async function(req, res){
 
 // 404 error page
 app.use(function(req, res){
-	res.status(404).render('error404', {page: req.url});
+	res.status(404).render("error404", {page: req.url});
 });
