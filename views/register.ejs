@@ -5,21 +5,22 @@
 		<!-- cdns -->
 		<%- include('./cdns.ejs')%>
 	</head>
-	
 	<body>
-		<form action="register" method="post">
-            <div>
-                <input required name="username" placeholder="UserName"/>
-				<input required name="password" placeholder="Password"/>
-				<input required name="email" placeholder="Email"/>
-				<input required name="confpassword" placeholder="confirm Password"/>
-            </div>
-			<a href="">
-            <button type="submit">Create Account</button>
+		<div class="pb-3 center">
+			<form action="register" method="post" class="inputForm">
+				<div>
+					<input required name="username" placeholder="UserName"/>
+					<input required name="password" placeholder="Password"/>
+					<input required name="email" placeholder="Email"/>
+					<input required name="confpassword" placeholder="confirm Password"/>
+				</div>
+				<a href="">
+					<button type="submit" class="btnSize btnColor">Create Account</button>
+				</a>
+			</form>
+			<a href="/login">
+				<button type="submit" class="btnSize btnColor" name="register" id="_RegisterView">Login Instead</button>
 			</a>
-        </form>
-		<a href="/login">
-			<button type="submit" class="btnSize btnColor" name="register" id="_RegisterView">Login Instead</button>
-		</a>
-	</body>
+		</div>
+    </body>
 </html>
