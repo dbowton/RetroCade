@@ -1,4 +1,4 @@
-$(document).ready(function()
+$(document).ready(async function()
 {
 	setGameData("smb", {hello:"hello"});
 });
