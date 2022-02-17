@@ -46,6 +46,9 @@ app.get(["/", "/home"], redirectLogin, async function(req, res){
 app.get("/login", async function(req, res){
 	res.render("login");
 });
+app.get("/Matt", async function(req, res){
+	res.render("games\\TicTacToe");
+});
 
 app.post("/login", async function(req, res){
 	const username = req.body.username;
