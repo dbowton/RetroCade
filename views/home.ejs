@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head>  
+
+<head>
 	<!-- cdns -->
 	<%- include('./cdns.ejs')%>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
 
+	<!-- <script>
+		$(function () {
+			$('#InfoButton').on("click", function () {
+				$.get('@Url.Action("home", "Home")', function (data) {
+					$("#myContentView").html(data);
+				})
+			});
+			$('#NotesButton').on("click", function () {
+				$.get('@Url.Action("library", "Home")', function (data) {
+					$("#myContentView").html(data);
+				})
+			});
+			$('#OrdersButton').on("click", function () {
+				$.get('@Url.Action("login", "Home")', function (data) {
+					$("#myContentView").html(data);
+				});
+			})
+		}); 
+	</script>-->
+</head>
 <body class="background">
 	<header>
-		<nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 indexBar indexBar">
-			<div class="container">
-
-				<a class="navbar-brand titleColor" ><img class="logo" src="~/pics/logo.png" />RetroCade</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between titleColor">
-					<ul class="navbar-nav flex-grow-1">
-							<li class="nav-item">
-								<a class="nav-link titleColor">Home</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link titleColor">Collection</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link titleColor">Search</a>
-							</li>
-						<div>
-							<li class="nav-item">
-								<a class="nav-link titleColor">Signout</a>
-							</li>
-						</div>
-					</ul>
-				</div>
-			</div>
-		</nav>
+		<%- include('./PageNavBar.ejs')%>
 	</header>
 	<div class="container">
 		games xd hahahahhaha
 		Dynamic Container for games pages and game library here.
-		
+		<div class="hi">
+			
+			<%- include('./library.ejs')%>
 
-	<footer class="footer indexBar">
-		<div class="container">
-			<img class="logo" src="~/css/pics/logo.png" />
-			<div class="titleColor">RetroCade&copy; 2022 OnlineLibrary</div>
 		</div>
-	</footer>
-	
+	</div>
+
+	<%- include('./Footer.ejs')%>
 </body>
+
 </html>

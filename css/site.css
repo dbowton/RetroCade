@@ -75,8 +75,9 @@ body {
 }
 
 .imgSize {
-  height: 240px;
-  width: 185px;
+  height: 150px;
+  width: 110px;
+  padding-right: 8rem;
 }
 
 .title {
@@ -126,11 +127,6 @@ body {
   flex-direction:column;
 }
 
-.imgSize {
-  height: 240px;
-  width: 185px;
-}
-
 .title {
   height: 90px;
   display: flex;
@@ -169,6 +165,23 @@ body {
   margin-top: 15%;
 }
 
+.dSize{
+  font-size: 12px;
+}
+
 .logo{
   height: 50px;
+}
+
+.cardSize{
+  height: 17rem;
+  width: 28rem;
+}
+
+.side-by-side{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 1rem;
 }
