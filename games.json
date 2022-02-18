@@ -3,6 +3,10 @@
 		{
 			"name":"supperMonkeyBall",
 			"file":"supperMonkeyBall.ejs"
+		},
+		{
+			"name":"tictactoe",
+			"file":"TicTacToe.ejs"
 		}
 	]
 }
