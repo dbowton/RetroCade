@@ -1,5 +1,6 @@
 const express = require("express");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
+const multer =  require("multer");
 const users = require("./users");
 const crypto = require("crypto");
 const fs = require("fs");
@@ -32,6 +33,7 @@ app.listen(port);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(multer().none());
 
 // static 
 app.use("/css", express.static("css"));
@@ -126,7 +128,7 @@ app.get("/getGameData/:game", redirectLogin, async function(req, res){
 app.post("/setGameData/:game", redirectLogin, async function(req, res){
 	const username = req.cookies.username;
 	const game = req.params.game;
-	const data = await req.body.data;
+	const data = await JSON.parse(await req.body.data);
 	users.setGameData(username, game, data);
 	res.send("success");
 });
@@ -140,7 +142,8 @@ app.get("/games/:game", redirectLogin, async function(req, res){
 	const gameName = req.params.game;
 	const gameData = readFile("games.json");
 	const game = gameData.games.find(e=>e.name==gameName);
-	res.render("games/"+game.file);
+	if(game != undefined)
+		res.render("games/"+game.file);
 });
 
 app.get("/library", redirectLogin, async function(req, res){

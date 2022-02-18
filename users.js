@@ -125,7 +125,7 @@ async function validateUserLogin(username, password)
 async function getGameData(username, game)
 {
 	let gameInfo = (await UserModel.findOne({username:username})).gameInfo.find(e=>e.game==game);
-	if(gameInfo)
+	if(gameInfo != undefined)
 		return gameInfo.data;
 	return undefined;
 }
@@ -138,9 +138,9 @@ async function setGameData(username, game, data)
 			result.gameInfo.push({game:game, data:data});
 		else
 			result.gameInfo.find(e=>e.game==game).data = data;
+
 		
 		result.save();
-
 	});
 }
 

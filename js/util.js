@@ -26,8 +26,14 @@ async function getGameData(game)
 
 async function setGameData(game, data)
 {
+	setGameDataString(game, JSON.stringify(data));
+}
+
+async function setGameDataString(game, dataString)
+{
 	let form = new FormData();
-	form.append("data", data);
+	console.log(dataString);
+	form.append("data", dataString);
 	$.ajax({
 		type:"POST",
 		url: "/setGameData/"+game,
