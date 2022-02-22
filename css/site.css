@@ -141,8 +141,6 @@ body {
   background-size: cover;
 }
 
-
-
 .centerBar {
   padding: 14rem 0rem;
 }
@@ -200,4 +198,30 @@ body {
   flex-wrap: wrap;
   padding: 1rem;
   margin: 0rem -5rem;
+}
+
+.signoutBtn{
+  border-radius: 10%;
+  height: 35px;
+  width: 80px;
+}
+
+.searchbar{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0rem 5rem;
+}
+
+.searchBtnSize{
+  height: 34px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.searchbarSize{
+  height: 35px;
+  border-radius: 10px;
+  width: 15rem;
 }
