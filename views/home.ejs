@@ -6,26 +6,8 @@
 	<%- include('./cdns.ejs')%>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- <script>
-		$(function () {
-			$('#InfoButton').on("click", function () {
-				$.get('@Url.Action("home", "Home")', function (data) {
-					$("#myContentView").html(data);
-				})
-			});
-			$('#NotesButton').on("click", function () {
-				$.get('@Url.Action("library", "Home")', function (data) {
-					$("#myContentView").html(data);
-				})
-			});
-			$('#OrdersButton').on("click", function () {
-				$.get('@Url.Action("login", "Home")', function (data) {
-					$("#myContentView").html(data);
-				});
-			})
-		}); 
-	</script>-->
+	<script src="/js/util.js"></script>
+	<script src="/js/CardRender.js"></script>
 </head>
 <body class="background">
 	<header>
@@ -34,10 +16,7 @@
 	<div class="container">
 		games xd hahahahhaha
 		Dynamic Container for games pages and game library here.
-		<div class="hi">
-			
-			<%- include('./library.ejs')%>
-
+		<div id="list" class="library row">
 		</div>
 	</div>
 

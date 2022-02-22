@@ -11,6 +11,26 @@
 		{
 			"name": "casinoHustler",
 			"file": "casino.ejs"
+		},
+		{
+			"name":"Breakout",
+			"file":"supperMonkeyBall.ejs",
+			"description" : "super monlkey ball but created by students"
+		},
+		{
+			"name":"hiiii",
+			"file":"supperMonkeyBall.ejs",
+			"description" : "super monlkey ball but created by students"
+		},
+		{
+			"name":"hiiii",
+			"file":"supperMonkeyBall.ejs",
+			"description" : "super monlkey ball but created by students"
+		},
+		{
+			"name":"hiiii",
+			"file":"supperMonkeyBall.ejs",
+			"description" : "super monlkey ball but created by students"
 		}
 	]
 }
