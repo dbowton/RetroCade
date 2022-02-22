@@ -36,8 +36,6 @@ var formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
 });
 
-var chipsFormatted = formatter.format(chips);
-
 setInterval(theCounter, 1000);
 setInterval(theUpdate, 100);
 
@@ -63,6 +61,9 @@ function theCounter() {
 }
 
 function theUpdate() {
+
+    var chipsFormatted = formatter.format(chips);
+
     //update the Money and cost of each item
     document.getElementById("Money").innerHTML = chipsFormatted;
 
@@ -102,12 +103,13 @@ function theUpdate() {
         randomBad1 = 0;
         randomBad2 = 0;
     }
+
+    console.log(chipsFormatted);
 }
 
 function tokenClicked() {
     //money click
     chips++
-    console.log("Munny Click")
 }
 
 function slotsClicked() {
@@ -288,4 +290,5 @@ function updateClicked() {
 
 function munnyError(cost) {
     //displays error message
+    console.log("Not enough Muns: " + cost)
 }

@@ -1,13 +1,23 @@
-body{
-    background-color: #d9d982;
-}
+/*
+  Black: #23272A, (35, 39, 42)
+  Grey: #CCCCCC, (024, 204, 204)
 
+  Red: #E32926, (227, 21, 28)
+  Yellow: #F9F39F, (249, 243, 259)
+  Blue: #0062B8, (0, 98, 184)
+
+  Vegas BB
+*/
+
+body{
+    background-color: #23272a;
+}
 
 .grid-container {
   display: grid;
     grid-template-columns: auto auto auto auto auto auto;
     grid-gap: 5px;
-    /* background-color: #2196F3; */
+    background-color: #cccccc;
     padding: 10px;
    
   } 
@@ -16,23 +26,23 @@ body{
     grid-area: 1 / 2 / 2 / 6 ;
     font-size: 100px;
     text-align: center;
-    color: #000;
+    color: #BD1B18;
     animation: glow 1s ease-in-out infinite alternate;
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Lobster Two', cursive; /* fix font */
   }
 
   @keyframes glow {
     from {
-      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #A21715, 0 0 40px #A21715, 0 0 50px #A21715, 0 0 60px #A21715, 0 0 70px #A21715;
     }
     to {
-      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      text-shadow: 0 0 20px #fff, 0 0 30px #E53B38, 0 0 40px #E53B38, 0 0 50px #E53B38, 0 0 60px #E53B38, 0 0 70px #E53B38, 0 0 80px #E53B38;
     }
   }
   
 .Background{
 
-    background-image: url("images/carpet finished.png");
+    /*background-image: url("images/carpet finished.png");*/
     height: 500px;
     background-size: cover;
     grid-area: 2 / 1 / 6 / 6;
@@ -42,79 +52,79 @@ body{
     border-radius: 8px;
     display: inline-block;
     text-align: center;
-    color: #000;
+    color: #0062b8;
     height: 50%;
     transition-duration: 0.4s;
-    background-color: white;  
-    border: 2px solid hotpink;
+    background-color: #CCCCCC;  
+    border: 2px solid #F6EE78;
     grid-area: 2/ 6 / 3 /7;
 }
 #btn2{
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  color: #000;
+  color: #0062b8;
   height: 50%;
   transition-duration: 0.4s;
-  background-color: white;  
-  border: 2px solid hotpink;
+  background-color: #CCCCCC;
+  border: 2px solid #F6EE78;
   grid-area: 3/ 6 / 4 /7;
 }
 #btn3{
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  color: #000;
+  color: #0062b8;
   height: 50%;
   transition-duration: 0.4s;
-  background-color: white;  
-  border: 2px solid hotpink;
+  background-color: #CCCCCC;
+  border: 2px solid #F6EE78;
   grid-area: 4/ 6 / 5 /7;
 }
 #btn4{
   border-radius: 8px;
   display: inline-block;
   text-align: center;
-  color: #000;
+  color: #0062b8;
   height: 50%;
   transition-duration: 0.4s;
-  background-color: white;  
-  border: 2px solid hotpink;
+  background-color: #CCCCCC;
+  border: 2px solid #F6EE78;
   grid-area: 5/ 6 / 6 /7;
 }
 
 #btn:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0,98,184,0.24),0 17px 50px 0 rgba(0,98,184,0.19);
 }
 #btn2:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0,98,184,0.24),0 17px 50px 0 rgba(0,98,184,0.19);
 }
 #btn3:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0,98,184,0.24),0 17px 50px 0 rgba(0,98,184,0.19);
 }
 #btn4:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0,98,184,0.24),0 17px 50px 0 rgba(0,98,184,0.19);
 }
 
 
 #btn:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #f6ee78;
+  box-shadow: 0 5px #f9f39f;
   transform: translateY(4px);
 }
 #btn2:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #f6ee78;
+  box-shadow: 0 5px #f9f39f;
   transform: translateY(4px);
 }
 #btn3:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #f6ee78;
+  box-shadow: 0 5px #f9f39f;
   transform: translateY(4px);
 }
 #btn4:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
+  background-color: #f6ee78;
+  box-shadow: 0 5px #f9f39f;
   transform: translateY(4px);
 }
 
@@ -128,17 +138,17 @@ body{
 }
 
 #btnMoney:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 12px 16px 0 rgba(227,41,38,0.24),0 17px 50px 0 rgba(227,41,38,0.19);
 }
 
 #btnMoney:active {
-  box-shadow: 0 5px #666;
+  box-shadow: 0 5px #e32926;
   transform: translateY(4px);
 }
 
 .moneyShow{
   grid-area: 1 / 6 / 1 / 7;
-  background-image: url(" images/sign.png");
+  background-image: url("images/Casino/sign.png");
   background-size: 200px;
   background-position: center;
   background-repeat: no-repeat;  
@@ -161,12 +171,12 @@ body{
 
 #slots, #slotDisplay {
   display: inline;
-  color: #fff;
+  color: #cccccc;
 }
 
 #poker, #pokerDisplay{
   display: inline;
-  color: #fff;
+  color: #cccccc;
   /* position: absolute;
   top: center;
   left: 16px; */
@@ -174,7 +184,7 @@ body{
 #bljk,#bljkDisplay{
   display: inline;
   float: right;
-  color: #fff;
+  color: #cccccc;
   /* position: absolute;
   top: center;
   left: 16px; */
@@ -182,7 +192,7 @@ body{
 #roul,#roulDisplay{
   display: inline;
   float: right;
-  color: #fff;
+  color: #cccccc;
   /* position: absolute;
   top: center;
   left: 16px; */
