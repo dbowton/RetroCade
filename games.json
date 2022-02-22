@@ -1,12 +1,16 @@
 {
-	"games":[
+	"games": [
 		{
-			"name":"superMonkeyBall",
-			"file":"superMonkeyBall.ejs"
+			"name": "superMonkeyBall",
+			"file": "superMonkeyBall.ejs"
 		},
 		{
-			"name":"tictactoe",
-			"file":"TicTacToe.ejs"
+			"name": "tictactoe",
+			"file": "TicTacToe.ejs"
+		},
+		{
+			"name": "casinoHustler",
+			"file": "casino.ejs"
 		}
 	]
 }

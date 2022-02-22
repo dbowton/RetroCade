@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%- include('../cdns.ejs')%>
+        <%- include('../PageNavBar.ejs')%>
+        <link rel="stylesheet" href="/css/casino.css">
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="grid-container">
+                <input id="btnMoney" onclick="tokenClicked()" type="image" value="" src="images\poker chip finsihed twice.png"/>
+        
+                <div class="title">Casino Hustler</div> 
+        
+                <div class="moneyShow">
+                    <!-- <img src="images\sign.png" height="200px"> -->
+                    <div id="Money"></div>
+                </div>
+                <div class="Background">
+                    <div class="second-grid-containter">
+                        <div>
+                    <img id="slots" src="images/slots finsihed.png" style="display:none;"height="150px" >
+                    <div id="slotDisplay" style="display:none;"></div>
+                        </div>
+                    
+                    <div>
+                        <img id="poker" src="images/poker finsihed.png" style="display:none;" height="100px" >
+                        <div id="pokerDisplay" style="display:none;"></div>
+                    </div>
+                  
+                    <div>  
+                        <img id="bljk" src="images/black jack finished.png" style="display:none;" height="100px" >
+                        <div id="bljkDisplay" style="display:none;"></div>
+                    </div>
+                 <div>
+                    <img id="roul" src="images/R. finished.png" style="display:none;" height="150px" >
+                    <div id="roulDisplay" style="display:none;"></div>
+                 </div>
+                    
+        
+                </div>
+        
+                
+                </div>
+        
+                    <button id="btn" onclick="slotsClicked()"></button>
+              
+                    <button id="btn2" onclick="pokerClicked()"></button>
+        
+                    <button id="btn3" onclick="bljkClicked()"></button>
+        
+                    <button id="btn4" onclick="roulClicked()"></button>
+        
+                    <button id="btn5" onclick="updateClicked()"></button>
+                </div>
+                <%- include('../Footer.ejs')%>
+    </body>
+    
+    <script src="/js/casino.js"></script>
+</html>
