@@ -148,6 +148,8 @@ function slotsClicked() {
         munnyError(slotCost);
     }
 
+    console.log(slots);
+
 }
 
 function pokerClicked() {
@@ -178,6 +180,8 @@ function pokerClicked() {
 
         munnyError(pokerCost);
     }
+
+    console.log(poker);
 }
 
 function bljkClicked() {
@@ -208,6 +212,8 @@ function bljkClicked() {
 
         munnyError(bljkCost);
     }
+
+    console.log(bljk);
 }
 
 function roulClicked() {
@@ -238,6 +244,8 @@ function roulClicked() {
 
         munnyError(roulCost);
     }
+
+    console.log(roul);
 }
 
 function updateClicked() {
