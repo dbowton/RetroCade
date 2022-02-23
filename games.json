@@ -13,9 +13,9 @@
 			"file": "casino.ejs"
 		},
 		{
-			"name":"Breakout",
-			"file":"supperMonkeyBall.ejs",
-			"description" : "super monlkey ball but created by students"
+			"name":"breakout",
+			"file":"breakout.ejs",
+			"description" : "breakout"
 		},
 		{
 			"name":"hiiii",
