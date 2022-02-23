@@ -42,7 +42,7 @@ body{
   
 .Background{
 
-    /*background-image: url("images/carpet finished.png");*/
+    background-image: url("/images/Alantic\ City.jpg");
     height: 500px;
     background-size: cover;
     grid-area: 2 / 1 / 6 / 6;
@@ -148,7 +148,7 @@ body{
 
 .moneyShow{
   grid-area: 1 / 6 / 1 / 7;
-  background-image: url("images/Casino/sign.png");
+  background-image: url("/images/sign.png");
   background-size: 200px;
   background-position: center;
   background-repeat: no-repeat;  

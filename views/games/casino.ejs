@@ -1,11 +1,13 @@
 <!--
     Make it dynamic and resizable (some divs dont have closing divs)
-    Figure Out Canvas stuff to put all this in
+
+    Figure Out Canvas stuff to put all this in (messes with background color)
     Fix casino.js
         wont display number of idle machines
     Redo Site Colors to make better
     Make better
         add actual update changes
+        events (look at cookie clickers source code)
 -->
 
 <!DOCTYPE html>
@@ -15,35 +17,45 @@
         <%- include('../PageNavBar.ejs')%>
         <link rel="stylesheet" href="/css/casino.css">
     </head>
+
     <body>
+
+        <!-- Canvas stuff -->
+        <!-- <div>
+            <img id="pokerCarpet" src="/images/Alantic City.jpg" style="display: none;">
+            <canvas id="theCanvas" width="200" height="100"></canvas>
+        </div> -->
+
         <div class="grid-container">
             <div class="grid-container">
                 <input id="btnMoney" onclick="tokenClicked()" type="image" value="" src="images\poker chip finsihed twice.png"/>
-        
+                
                 <div class="title">Casino Hustler</div> 
-        
+                
                 <div class="moneyShow">
-                    <!-- <img src="images\sign.png" height="200px"> -->
+                   <!-- <img src="/images/sign.png" height="200px"> -->
                     <div id="Money"></div>
+                    
                 </div>
                 <div class="Background">
                     <div class="second-grid-containter">
-                        <div>
-                    <img id="slots" src="images/slots finsihed.png" style="display:none;"height="150px" >
-                    <div id="slotDisplay" style="display:none;"></div>
-                        </div>
+
+                    <div>
+                        <img id="slots" src="/images/slots finsihed.png" style="display:none;"height="150px" >
+                        <div id="slotDisplay" style="display:none;"></div>
+                    </div>
                     
                     <div>
-                        <img id="poker" src="images/poker finsihed.png" style="display:none;" height="100px" >
+                        <img id="poker" src="/images/poker finsihed.png" style="display:none;" height="100px" >
                         <div id="pokerDisplay" style="display:none;"></div>
                     </div>
                   
                     <div>  
-                        <img id="bljk" src="images/black jack finished.png" style="display:none;" height="100px" >
+                        <img id="bljk" src="/images/black jack finished.png" style="display:none;" height="100px" >
                         <div id="bljkDisplay" style="display:none;"></div>
                     </div>
                  <div>
-                    <img id="roul" src="images/R. finished.png" style="display:none;" height="150px" >
+                    <img id="roul" src="/images/R. finished.png" style="display:none;" height="150px" >
                     <div id="roulDisplay" style="display:none;"></div>
                  </div>
                 </div>
@@ -60,7 +72,11 @@
                     <button id="btn5" onclick="updateClicked()"></button>
                 </div>
                 <%- include('../Footer.ejs')%>
-    </body>
     
-    <script src="/js/casino.js"></script>
+                
+                
+                <script src="/js/casino.js"></script>
+            </div>
+        </div>
+    </body>
 </html>

@@ -31,6 +31,12 @@ var randomGood2;
 var randomBad1;
 var randomBad2;
 
+var can = document.getElementById("theCanvas");
+var context = can.getContext("2d");
+
+var img = document.getElementById("pokerCarpet")
+context.drawImage(img, 10, 10);
+
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
