@@ -46,10 +46,6 @@ app.get("/login", async function (req, res) {
 	res.render("login");
 });
 
-app.get("/Casino", async function (req, res) {
-	res.render("games/casino");
-});
-
 app.post("/login", async function (req, res) {
 	const username = req.body.username;
 	const password = req.body.password;
