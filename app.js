@@ -139,10 +139,6 @@ app.get("/games/:game", redirectLogin, async function (req, res) {
 		res.render("games/" + game.file);
 });
 
-app.get("/library", redirectLogin, async function (req, res) {
-	res.render("library");
-});
-
 // 404 error page
 app.use(function (req, res) {
 	res.status(404).render("error404", { page: req.url });
