@@ -24,6 +24,8 @@
 		{
 			"name":"breakout",
 			"file":"breakout.ejs",
+			"image":"Add Image",
+			"genre":"Add Genre",
 			"description" : "breakout"
 		}
 	]
