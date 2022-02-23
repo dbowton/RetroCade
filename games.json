@@ -2,35 +2,24 @@
 	"games": [
 		{
 			"name":"superMonkyBall",
-			"file":"smb.ejs"
+			"file":"smb.ejs",
+			"image":"Add Image",
+			"genre":"Add Genre",
+			"description":"Add a Description"
 		},
 		{
-			"name": "tictactoe",
-			"file": "TicTacToe.ejs"
+			"name": "TicTacToe",
+			"file": "TicTacToe.ejs",
+			"image":"Add Image",
+			"genre":"Add Genre",
+			"description":"Add a Description"
 		},
 		{
 			"name": "casinoHustler",
-			"file": "casino.ejs"
-		},
-		{
-			"name":"Breakout",
-			"file":"supperMonkeyBall.ejs",
-			"description" : "super monlkey ball but created by students"
-		},
-		{
-			"name":"hiiii",
-			"file":"supperMonkeyBall.ejs",
-			"description" : "super monlkey ball but created by students"
-		},
-		{
-			"name":"hiiii",
-			"file":"supperMonkeyBall.ejs",
-			"description" : "super monlkey ball but created by students"
-		},
-		{
-			"name":"hiiii",
-			"file":"supperMonkeyBall.ejs",
-			"description" : "super monlkey ball but created by students"
+			"file": "casino.ejs",
+			"image":"Add Image",
+			"genre":"Add Genre",
+			"description":"Add a Description"
 		}
 	]
 }
