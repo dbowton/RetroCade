@@ -46,10 +46,6 @@ app.get("/login", async function (req, res) {
 	res.render("login");
 });
 
-app.get("/Matt", async function (req, res) {
-	res.render("games\\TicTacToe");
-});
-
 app.get("/Casino", async function (req, res) {
 	res.render("games/casino");
 });

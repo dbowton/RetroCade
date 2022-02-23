@@ -1,8 +1,8 @@
 {
 	"games": [
 		{
-			"name": "superMonkeyBall",
-			"file": "superMonkeyBall.ejs"
+			"name":"superMonkyBall",
+			"file":"smb.ejs"
 		},
 		{
 			"name": "tictactoe",
