@@ -5,6 +5,7 @@ $(document).ready(async function(){
 	for(var i = 0; i < gamelist.length; i++){
 		const game = gamelist[i];
 		const html = `<div class="minusPadding">
+		<a href="/${game.name}">
 		<div class="row">
 			<div class="card cardSize" id="cardPadding">
 				<h4 class="title">${game.name}</h4>
@@ -18,6 +19,7 @@ $(document).ready(async function(){
 					</div>
 				</div>
 			</div>
+			</a>
 		</div>`
 
 		$("#list").append(html);
