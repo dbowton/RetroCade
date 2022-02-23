@@ -66,6 +66,13 @@ app.post("/login", async function (req, res) {
 
 });
 
+app.get("/logout", async function(req, res){
+	const username = req.cookies.username;
+	res.clearCookie("username");
+	users.removeSession(username);
+	res.redirect("/login");
+});
+
 app.get("/register", async function (req, res) {
 	res.render("register");
 });
@@ -131,12 +138,14 @@ app.get("/gameList", redirectLogin, async function (req, res) {
 	res.send(gameData);
 });
 
-app.get("/games/:game", redirectLogin, async function (req, res) {
+app.get("/games/:game", redirectLogin, async function (req, res, next) {
 	const gameName = req.params.game;
 	const gameData = readFile("games.json");
 	const game = gameData.games.find(e => e.name == gameName);
 	if (game != undefined)
 		res.render("games/" + game.file);
+	else
+		next();
 });
 
 // 404 error page

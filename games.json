@@ -20,6 +20,11 @@
 			"image":"Add Image",
 			"genre":"Add Genre",
 			"description":"Add a Description"
+		},
+		{
+			"name":"breakout",
+			"file":"breakout.ejs",
+			"description" : "breakout"
 		}
 	]
 }
