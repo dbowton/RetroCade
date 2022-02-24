@@ -11,7 +11,7 @@ $(document).ready(async function(){
 				<h4 class="title">${game.name}</h4>
 				
 				<div class="card-body side-by-side">
-					<img class="imgSize" src="css/pics/${game.image}" />
+					<img class="imgSize" src="/images/${game.image}" />
 					<div class="text-left">
 						<h6>Genre: ${game.genre}Genre</h6>
 						<h6>Game Description: <p class="dSize">${game.description}</p>
@@ -24,9 +24,4 @@ $(document).ready(async function(){
 
 		$("#list").append(html);
 	}
-
-
-
-
-	
 })

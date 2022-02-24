@@ -3,28 +3,28 @@
 		{
 			"name":"superMonkyBall",
 			"file":"smb.ejs",
-			"image":"Add Image",
+			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description":"Add a Description"
 		},
 		{
 			"name": "TicTacToe",
 			"file": "TicTacToe.ejs",
-			"image":"Add Image",
+			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description":"Add a Description"
 		},
 		{
 			"name": "casinoHustler",
 			"file": "casino.ejs",
-			"image":"Add Image",
+			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description":"Add a Description"
 		},
 		{
 			"name":"breakout",
 			"file":"breakout.ejs",
-			"image":"Add Image",
+			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description" : "breakout"
 		}

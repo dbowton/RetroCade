@@ -134,13 +134,6 @@ body {
   align-items: center;
 }
 
-.background {
-  background-image: url("pics/background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .centerBar {
   padding: 14rem 0rem;
 }
@@ -208,7 +201,7 @@ body {
 
 .searchbar{
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   flex-wrap: nowrap;
   align-items: center;
   margin: 0rem 5rem;
@@ -225,3 +218,20 @@ body {
   border-radius: 10px;
   width: 15rem;
 }
+
+#result {
+	position: absolute;
+	width: 300px;
+	cursor: pointer;
+	overflow-y: auto;
+	max-height: 400px;
+	box-sizing: border-box;
+	z-index: 1001;
+ }
+ .link-class:hover{
+  background-color:#f1f1f1;
+ }
+
+ .resultList{
+	margin-top: 20%;
+ }

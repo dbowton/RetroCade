@@ -2,62 +2,42 @@
 <html>
 
 <head>
-    <!-- cdns -->
-    <%- include('./cdns.ejs')%>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- <script>
-            $(function () {
-                $('#InfoButton').on("click", function () {
-                    $.get('@Url.Action("home", "Home")', function (data) {
-                        $("#myContentView").html(data);
-                    })
-                });
-                $('#NotesButton').on("click", function () {
-                    $.get('@Url.Action("library", "Home")', function (data) {
-                        $("#myContentView").html(data);
-                    })
-                });
-                $('#OrdersButton').on("click", function () {
-                    $.get('@Url.Action("login", "Home")', function (data) {
-                        $("#myContentView").html(data);
-                    });
-                })
-            }); -->
-
-    <!-- var name= './games/supperMonkeyBall' -->
-    </script>
-
+	<!-- cdns -->
+	<%- include('./cdns.ejs')%>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/js/livesearch.js"></script>
 </head>
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 indexBar indexBar">
-    <div class="container">
 
-        <a class="navbar-brand titleColor"><img class="logo" src="/images/HomePage/puma.png" />RetroCade</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between titleColor">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link titleColor" href="http://localhost:3000/">Home</a>
-                </li>
-            </ul>
-            <div>
-                <form class="searchbar">
-                    <div>
-                        <input required name="name" placeholder="Enter Title" class="searchbarSize"/>
-                    </div>
-                    <button class="searchBtnSize" type="submit">Search Collection</button>
-                </form>
-            </div>
-            <div>
-                <a href="/logout"><button class="signoutBtn" name="signout" >Signout</button></a>
-                
-            </div>
-        </div>
-    </div>
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm box-shadow mb-3 indexBar indexBar">
+	<div class="container">
+
+		<a class="navbar-brand titleColor"><img class="logo" src="/images/HomePage/puma.png" />RetroCade</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between titleColor">
+			<ul class="navbar-nav flex-grow-1">
+				<li class="nav-item">
+					<a class="nav-link titleColor" href="http://localhost:3000/">Home</a>
+				</li>
+			</ul>
+			<div>
+				<div class="center searchbar">
+					<input type="text" name="search" id="search" placeholder="Enter a Title" class="searchbarSize" />
+					<div class="resultList">
+						<ul class="list-group" id="result"></ul>
+					</div>
+				</div>
+			</div>
+			<div>
+				<a href="/logout"><button class="signoutBtn" name="signout">Signout</button></a>
+
+			</div>
+		</div>
+	</div>
 </nav>
 
 </html>
