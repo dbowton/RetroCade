@@ -22,11 +22,11 @@
 			"description":"Add a Description"
 		},
 		{
-			"name":"breakout",
+			"name":"Breakout",
 			"file":"breakout.ejs",
 			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description" : "breakout"
+			"genre":"Action-Adventure-Horror-RPG-FPS-Adult-18+-Strategy-Simulator",
+			"description" : "Imagine Breakout... but Better"
 		}
 	]
 }

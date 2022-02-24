@@ -7,6 +7,9 @@ function setup()
 {
 	c.width = window.innerWidth;
 	c.height = window.innerHeight - 100;
+
+	ctx.font = "65px Arial";
+	ctx.fillText("Click To Start", (c.width - ctx.measureText("Click To Start").width) / 2, c.height / 2);
 }
 
 const BRICKS_HORIZONTAL = 5;
@@ -23,6 +26,7 @@ let dx;
 let dy;
 let ball_x;
 let ball_y;
+let ball_speed = 2;
 
 const paddle_width = (c.width / 6);
 let paddle_height = (c.height / 24);
@@ -47,9 +51,9 @@ class brick
 
 function start()
 {
-	dx = 6 * ((Math.floor(Math.random() * 45) + 22.5) / 90);
+	dx = 0 * ball_speed;
+	dy = 1 * ball_speed;
 	if(Math.random() >= 0.5) dx = -dx;
-	dy = -6;
 	ball_x = Math.floor(c.width / 2);
 	ball_y = Math.floor((c.height / 4) * 3);
 	makeBricks();
@@ -136,7 +140,13 @@ function moveBall()
 	
 	if(ball_x - BALL_RADIUS >= paddle_x && ball_x + BALL_RADIUS <= paddle_x + paddle_width && ball_y + BALL_RADIUS >= paddle_y && ball_y - BALL_RADIUS < paddle_y + paddle_height)
 	{
-		dy = -Math.abs(dy);
+		var angle = ((paddle_x + paddle_width / 2) - ball_x) / (paddle_width / 2);
+		
+		dx = Math.cos(angle) * ball_speed;
+
+		if(ball_x < paddle_x + paddle_width / 2) dx = -dx;
+
+		dy = -Math.abs(Math.sin(angle) * ball_speed);
 	}
 
 	ball_x += dx;
