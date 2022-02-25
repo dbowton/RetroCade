@@ -8,11 +8,11 @@
 			"description":"Add a Description"
 		},
 		{
-			"name": "TicTacToe",
-			"file": "TicTacToe.ejs",
+			"name": "SpaceShooter",
+			"file": "SpaceShooter.ejs",
 			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description":"Add a Description"
+			"genre":"Top Down Bullethell",
+			"description":"Try to last as long as you can when faced with an onslaught of enemies in the hectic bullethell."
 		},
 		{
 			"name": "casinoHustler",
