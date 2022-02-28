@@ -25,8 +25,8 @@
 			"name":"Breakout",
 			"file":"breakout.ejs",
 			"image":"HomePage/puma.png",
-			"genre":"Action-Adventure-Horror-RPG-FPS-Adult-18+-Strategy-Simulator",
-			"description" : "Imagine Breakout... but Better"
+			"genre":"Arcade",
+			"description" : "Round after round of intense brick breaking action"
 		}
 	]
 }

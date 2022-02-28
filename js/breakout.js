@@ -6,27 +6,27 @@ setup();
 function setup()
 {
 	c.width = window.innerWidth;
-	c.height = window.innerHeight - 100;
+	c.height = window.innerHeight - 150;
 
 	ctx.font = "65px Arial";
 	ctx.fillText("Click To Start", (c.width - ctx.measureText("Click To Start").width) / 2, c.height / 2);
 }
 
-const BRICKS_HORIZONTAL = 5;
-const BRICKS_VERTICAL = 2;
+let BRICKS_HORIZONTAL = 1;
+let BRICKS_VERTICAL = 1;
 
 const SCREEN_BUFFER = 20;
 
 const BRICK_BUFFER = 5;
-const BRICK_WIDTH = (((c.width - (2 * SCREEN_BUFFER)) / BRICKS_HORIZONTAL) - BRICK_BUFFER)
-const BRICK_HEIGHT = ((((c.height / 3) - (2 * SCREEN_BUFFER)) / BRICKS_VERTICAL) - BRICK_BUFFER);
+let BRICK_WIDTH;
+let BRICK_HEIGHT;
 
 const BALL_RADIUS = 10;
 let dx;
 let dy;
 let ball_x;
 let ball_y;
-let ball_speed = 2;
+let ball_speed = 4;
 
 const paddle_width = (c.width / 6);
 let paddle_height = (c.height / 24);
@@ -51,6 +51,9 @@ class brick
 
 function start()
 {
+	BRICK_WIDTH = (((c.width - (2 * SCREEN_BUFFER)) / BRICKS_HORIZONTAL) - BRICK_BUFFER);
+	BRICK_HEIGHT = ((((c.height / 3) - (2 * SCREEN_BUFFER)) / BRICKS_VERTICAL) - BRICK_BUFFER);
+
 	dx = 0 * ball_speed;
 	dy = 1 * ball_speed;
 	if(Math.random() >= 0.5) dx = -dx;
@@ -73,6 +76,7 @@ function gameLoop()
 
 window.onmousedown = function()
 { 
+	if(isPlaying) return;
 	isPlaying = false;
 	start();
 }
@@ -94,19 +98,26 @@ function checkWin()
 	if(bricks.length == 0) 
 	{
 		ctx.clearRect(0, 0, c.width, c.height);
-		ctx.font = "50px Arial";
-		ctx.fillText("Game Over", (c.width - ctx.measureText("Game Over").width) / 2, c.height / 2 - 60);
-		ctx.font = "65px Arial";
-		ctx.fillText("Winner", (c.width - ctx.measureText("Winner").width) / 2, c.height / 2);
-		isPlaying = false; 
+		
+		BRICKS_HORIZONTAL += 2;
+		BRICKS_VERTICAL += 1;
+
+		paddle_x = c.width / 2 - paddle_width / 2;
+		
+		start();
 	}
 	else if(ball_y > c.height) 
 	{ 
 		ctx.clearRect(0, 0, c.width, c.height);
 		ctx.font = "50px Arial";
 		ctx.fillText("Game Over", (c.width - ctx.measureText("Game Over").width) / 2, c.height / 2 - 60);
-		ctx.font = "65px Arial";
-		ctx.fillText("Loser", (c.width - ctx.measureText("Loser").width) / 2, c.height / 2);
+		
+		ctx.font = "35px Arial";
+		ctx.fillText("Click to Replay", (c.width - ctx.measureText("Click to Replay").width) / 2, c.height / 2);
+		
+		BRICKS_HORIZONTAL = 1;
+		BRICKS_VERTICAL = 1;
+		paddle_x = c.width / 2 - paddle_width / 2;
 		isPlaying = false; 
 	}
 }
@@ -169,7 +180,7 @@ function makeBricks()
 		{
 			ctx.beginPath();
 
-			switch(Math.floor(i / 2))
+			switch(i % 5)
 			{
 				case 0:
 					color = "red";
@@ -230,6 +241,7 @@ function collided(brick)
 	if (index > -1) {
 		bricks.splice(index, 1);
 	}
+	ball_speed++;
 }
 
 function drawBall()

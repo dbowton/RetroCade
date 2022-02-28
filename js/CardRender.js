@@ -13,7 +13,7 @@ $(document).ready(async function(){
 				<div class="card-body side-by-side">
 					<img class="imgSize" src="/images/${game.image}" />
 					<div class="text-left">
-						<h6>Genre: ${game.genre}Genre</h6>
+						<h6>Genre: ${game.genre}</h6>
 						<h6>Game Description: <p class="dSize">${game.description}</p>
 						</h6>
 					</div>
