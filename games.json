@@ -8,6 +8,13 @@
 			"description":"Add a Description"
 		},
 		{
+			"name":"Pokemon Crystal",
+			"file":"pokemonCrystal.ejs",
+			"image":"HomePage/puma.png",
+			"genre":"Add Genre",
+			"description":"Add a Description"
+		},
+		{
 			"name": "Space Shooter",
 			"file": "SpaceShooter.ejs",
 			"image":"HomePage/puma.png",
@@ -34,13 +41,6 @@
 			"image":"HomePage/puma.png",
 			"genre":"Arcade",
 			"description" : ""
-		},
-		{
-			"name":"Pokemon Crystal",
-			"file":"pokemonCrystal.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description":"Add a Description"
 		}
 	]
 }

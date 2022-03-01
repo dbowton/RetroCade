@@ -161,7 +161,7 @@ io.on("connection", async function(soc){
 	soc.on("createGBCInstance", async function(data){
 		gbc.CreateGBCInstance("./roms/" + data.rom, soc.id);
 
-		gameloop = setInterval(doFrame, 1);
+		gameloop = setInterval(doFrame, 1/60);
 
 		async function doFrame()
 		{
