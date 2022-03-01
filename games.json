@@ -1,21 +1,21 @@
 {
 	"games": [
 		{
-			"name":"superMonkyBall",
+			"name":"Super Monky Ball",
 			"file":"smb.ejs",
 			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description":"Add a Description"
 		},
 		{
-			"name": "SpaceShooter",
+			"name": "Space Shooter",
 			"file": "SpaceShooter.ejs",
 			"image":"HomePage/puma.png",
 			"genre":"Top Down Bullethell",
 			"description":"Try to last as long as you can when faced with an onslaught of enemies in the hectic bullethell."
 		},
 		{
-			"name": "casinoHustler",
+			"name": "Casino Hustler",
 			"file": "casino.ejs",
 			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
@@ -36,7 +36,7 @@
 			"description" : ""
 		},
 		{
-			"name":"MarioLand",
+			"name":"Pokemon Crystal",
 			"file":"marioLand.ejs",
 			"image":"HomePage/puma.png",
 			"genre":"Add Genre",

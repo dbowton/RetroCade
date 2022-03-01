@@ -1,51 +1,53 @@
 <%- include('../cdns.ejs')%>
 <link rel="stylesheet", href="/css/gb.css">
+<script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
 <script>
 	$(document).ready(async function()
 	{
-		var gameboy = window.gameboy = new (window.Gameboy)();
 
-		// Render
+		var canvas = document.getElementById("screen");
+		var ctx = canvas.getContext("2d");
+		var ctx_data = ctx.createImageData(160, 144);
 
-		var canvas = document.getElementById('screen');
+		const socket = await io("localhost:3000");
+		socket.on("connection");
+		socket.emit("createGBCInstance", {rom:"PokemonCrystal.gbc"});
 
-		var ctx = canvas.getContext('2d');
-		gameboy.gpu.on('frame', function (offcanvas) {
-			ctx.drawImage(offcanvas, 0, 0);
+		socket.on("frame", async function(data)
+		{
+			for (var i=0; i < data.screen.length; i++)
+				ctx_data.data[i] = data.screen[i];
+			ctx.putImageData(ctx_data, 0, 0);
 		});
 
-		// Load rom
+		var keys = {
+			"37":"left",
+			"39":"right",
+			"38":"up",
+			"40":"down",
+			"90":"a",
+			"88":"b",
+			"13":"start",
+			"32":"select"
+		};
 
-		fetch(new Request("<%- rom; %>"))
-			.then(response => response.arrayBuffer())
-			.then(function (buffer) {
-				gameboy.loadCart(buffer);
-				gameboy.start();
-			});
-		
-		// Buttons
-		
-		function loadFile () {
-			if (!this.files.length) return;
-		
-			var reader = new FileReader();
-			reader.onloadend = function () {
-				gameboy.loadCart(reader.result);
-				gameboy.start();
-			};
-			reader.readAsArrayBuffer(this.files[0]);
+		window.onkeydown = function(e)
+		{
+			if(keys[e.keyCode] != undefined) {
+				socket.emit('keydown', { key: keys[e.keyCode] });
+			} else {
+				if(e.keyCode === 27) {
+					socket.emit('restart', {});
+				}
+			}
+
 		}
 
-		function fullscreen () {
-			(
-				canvas.requestFullscreen ||
-				canvas.mozRequestFullScreen ||
-				canvas.webkitRequestFullscreen ||
-				canvas.msRequestFullscreen
-			).call(canvas);
+		window.onkeyup = function(e)
+		{
+			if(keys[e.keyCode]) {
+				socket.emit('keyup', { key: keys[e.keyCode] });
+			}
 		}
-
-		$(document).keydown(function (e) { gameboy.joypad.keyDown(e.keyCode) });
-		$(document).keyup(function (e) { gameboy.joypad.keyUp(e.keyCode) });
 	});
 </script>

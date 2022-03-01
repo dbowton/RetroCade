@@ -1,7 +1,10 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
+const http = require("http");
+const socket = require("socket.io");
 const users = require("./users");
+const gbc = require("./gbc");
 const crypto = require("crypto");
 const fs = require("fs");
 
@@ -23,9 +26,12 @@ async function redirectLogin(req, res, next) {
 
 const port = 3000;
 const app = express();
+const server = http.createServer(app);
+const io = socket(server, { cors:{ origin:"*" }});
+
 app.set("view engine", "ejs");
 
-app.listen(port);
+server.listen(port);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -147,6 +153,33 @@ app.get("/games/:game", redirectLogin, async function (req, res, next) {
 		res.render("games/" + game.file);
 	else
 		next();
+});
+
+// gameboy
+io.on("connection", async function(soc){
+	var gameloop;
+	soc.on("createGBCInstance", async function(data){
+		gbc.CreateGBCInstance("./roms/" + data.rom, soc.id);
+
+		gameloop = setInterval(doFrame, 1);
+
+		async function doFrame()
+		{
+			soc.emit("frame", {screen: await gbc.GetFrame(soc.id)});
+		}
+	});
+
+	soc.on("keydown", async function(data){
+		gbc.KeyDown(soc.id, data.key);
+	});
+	soc.on("keyup", async function(data){
+		gbc.KeyUp(soc.id, data.key);
+	});
+
+	soc.on("disconnect", async function(){
+		gbc.RemoveGBCInstance(soc.id);
+		clearInterval(gameloop);
+	});
 });
 
 // 404 error page

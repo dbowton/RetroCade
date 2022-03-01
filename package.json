@@ -6,6 +6,8 @@
     "express": "^4.17.2",
     "mongoose": "^6.2.1",
     "multer": "^1.4.4",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "serverboy": "^0.0.7",
+    "socket.io": "^4.4.1"
   }
 }
