@@ -37,7 +37,7 @@
 		},
 		{
 			"name":"Pokemon Crystal",
-			"file":"marioLand.ejs",
+			"file":"pokemonCrystal.ejs",
 			"image":"HomePage/puma.png",
 			"genre":"Add Genre",
 			"description":"Add a Description"

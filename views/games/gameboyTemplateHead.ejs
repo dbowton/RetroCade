@@ -11,7 +11,7 @@
 
 		const socket = await io("localhost:3000");
 		socket.on("connection");
-		socket.emit("createGBCInstance", {rom:"PokemonCrystal.gbc"});
+		socket.emit("createGBCInstance", {rom:"<%- rom; %>"});
 
 		socket.on("frame", async function(data)
 		{
