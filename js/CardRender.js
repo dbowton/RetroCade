@@ -1,5 +1,4 @@
 $(document).ready(async function(){
-
 	var gamelist = (await getGameList()).games;
 
 	for(var i = 0; i < gamelist.length; i++){

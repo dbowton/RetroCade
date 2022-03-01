@@ -27,6 +27,13 @@
 			"image":"HomePage/puma.png",
 			"genre":"Arcade",
 			"description" : "Round after round of intense brick breaking action"
+		},
+		{
+			"name":"Space Invaders",
+			"file":"spaceInvaders.ejs",
+			"image":"HomePage/puma.png",
+			"genre":"Arcade",
+			"description" : ""
 		}
 	]
 }
