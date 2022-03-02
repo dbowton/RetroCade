@@ -1,13 +1,22 @@
 <!--
     Remake the web design
 
-    Figure Out Canvas stuff to put all this in (messes with background color)
     Fix casino.js
         wont display number of idle machines
+        add lottery cards == cursors on cookie clicker
     Redo Site Colors to make better
     Make better
         add actual update changes
         events (look at cookie clickers source code)
+
+        remember to change games info in games.json
+
+        TODO: Create new proj and copy all this over to there for easy testing
+            copy PageNavBar and the Footer ejs as well to see how itll look on the webpage
+            (if possible you can put all this in a canvas and format the page to be like girls go games)
+
+            Redo the photos as well
+            Have people playtest like Daijah and Jimmy
 -->
 
 <!DOCTYPE html>
@@ -16,65 +25,59 @@
         <%- include('../cdns.ejs')%>
         <%- include('../PageNavBar.ejs')%>
         <link rel="stylesheet" href="/css/casino.css">
+        <title>Casino Hustler</title>
     </head>
 
     <body>
-
-        <!-- Canvas stuff -->
-        <!-- <div>
-            <img id="pokerCarpet" src="/images/Alantic City.jpg" style="display: none;">
-            <canvas id="theCanvas" width="200" height="100"></canvas>
-        </div> -->
-
         <div class="grid-container">
-            <div class="grid-container">
-                <input id="btnMoney" onclick="tokenClicked()" type="image" value="" src="/images/Casino/poker chip finsihed twice.png"/>
-                
-                <div class="title">Casino Hustler</div> 
-                
-                <div class="moneyShow">
-                   <!-- <img src="/images/sign.png" height="200px"> -->
-                    <div id="Money"></div>
-                    
-                </div>
-                <div class="Background">
-                    <div class="second-grid-containter">
-
+            <input id="btnMoney" onclick="tokenClicked()" type="image" value="" src="images/BetterCasino/PokerChip.png"/>
+    
+            <div class="title">Casino Hustler</div> 
+    
+            <div class="moneyShow">
+                <div id="Money"></div>
+            </div>
+    
+            <div class="Background">
+    
+                <div class="second-grid-containter">
                     <div>
-                        <img id="slots" src="/images/Casino/slots finsihed.png" style="display:none;"height="150px" >
+                        <img id="slots" src="images/slots finsihed.png" style="display:none;"height="150px" >
                         <div id="slotDisplay" style="display:none;"></div>
                     </div>
-                    
+                
                     <div>
-                        <img id="poker" src="/images/Casino/poker finsihed.png" style="display:none;" height="100px" >
+                        <img id="poker" src="images/poker finsihed.png" style="display:none;" height="100px" >
                         <div id="pokerDisplay" style="display:none;"></div>
                     </div>
-                  
-                    <div>  
-                        <img id="bljk" src="/images/Casino/black jack finished.png" style="display:none;" height="100px" >
+              
+                    <div>
+    
+                        <img id="bljk" src="images/black jack finished.png" style="display:none;" height="100px" >
                         <div id="bljkDisplay" style="display:none;"></div>
                     </div>
-                 <div>
-                    <img id="roul" src="/images/Casino/R. finished.png" style="display:none;" height="150px" >
-                    <div id="roulDisplay" style="display:none;"></div>
-                 </div>
+    
+                    <div>
+                        <img id="roul" src="images/R. finished.png" style="display:none;" height="150px" >
+                        <div id="roulDisplay" style="display:none;"></div>
+                    </div>
                 </div>
-        
-                </div>
-                    <button id="btn" onclick="slotsClicked()"></button>
-              
-                    <button id="btn2" onclick="pokerClicked()"></button>
-        
-                    <button id="btn3" onclick="bljkClicked()"></button>
-        
-                    <button id="btn4" onclick="roulClicked()"></button>
-        
-                    <button id="btn5" onclick="updateClicked()"></button>
-                </div>
-                <%- include('../Footer.ejs')%>
-
-                <script src="/js/casino.js"></script>
             </div>
+    
+            <button id="btn" onclick="lottoClicked()">lotto</button>
+    
+            <button id="btn1" onclick="slotsClicked()">slots</button>
+          
+            <button id="btn2" onclick="pokerClicked()">poker</button>
+    
+            <button id="btn3" onclick="bljkClicked()">bljk</button>
+    
+            <button id="btn4" onclick="roulClicked()">roul</button>
+    
+            <button id="btn5" onclick="updateClicked()">update</button>
+    
+            <%- include('../Footer.ejs')%>
+            <script src="casino.js"></script>
         </div>
     </body>
 </html>

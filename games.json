@@ -1,46 +1,46 @@
 {
 	"games": [
 		{
-			"name":"Super Monky Ball",
-			"file":"smb.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description":"Add a Description"
+			"name": "Super Monky Ball",
+			"file": "smb.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Add Genre",
+			"description": "Add a Description"
 		},
 		{
-			"name":"Pokemon Crystal",
-			"file":"pokemonCrystal.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description":"Add a Description"
+			"name": "Pokemon Crystal",
+			"file": "pokemonCrystal.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Add Genre",
+			"description": "Add a Description"
 		},
 		{
 			"name": "Space Shooter",
 			"file": "SpaceShooter.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Top Down Bullethell",
-			"description":"Try to last as long as you can when faced with an onslaught of enemies in the hectic bullethell."
+			"image": "HomePage/puma.png",
+			"genre": "Top Down Bullethell",
+			"description": "Try to last as long as you can when faced with an onslaught of enemies in the hectic bullethell."
 		},
 		{
 			"name": "Casino Hustler",
 			"file": "casino.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Add Genre",
-			"description":"Add a Description"
+			"image": "HomePage/puma.png",
+			"genre": "Idle",
+			"description": "Manage a Casino and work your way to becoming the richest person in the world"
 		},
 		{
-			"name":"Breakout",
-			"file":"breakout.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Arcade",
-			"description" : "Round after round of intense brick breaking action"
+			"name": "Breakout",
+			"file": "breakout.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Arcade",
+			"description": "Round after round of intense brick breaking action"
 		},
 		{
-			"name":"Space Invaders",
-			"file":"spaceInvaders.ejs",
-			"image":"HomePage/puma.png",
-			"genre":"Arcade",
-			"description" : ""
+			"name": "Space Invaders",
+			"file": "spaceInvaders.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Arcade",
+			"description": ""
 		}
 	]
 }
