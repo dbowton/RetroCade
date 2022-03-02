@@ -54,6 +54,8 @@ function start()
 	BRICK_WIDTH = (((c.width - (2 * SCREEN_BUFFER)) / BRICKS_HORIZONTAL) - BRICK_BUFFER);
 	BRICK_HEIGHT = ((((c.height / 3) - (2 * SCREEN_BUFFER)) / BRICKS_VERTICAL) - BRICK_BUFFER);
 
+	ball_speed = 4;
+
 	dx = 0 * ball_speed;
 	dy = 1 * ball_speed;
 	if(Math.random() >= 0.5) dx = -dx;
