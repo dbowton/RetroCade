@@ -8,13 +8,14 @@
 		var canvas = document.getElementById("screen");
 		var ctx = canvas.getContext("2d");
 		var ctx_data = ctx.createImageData(160, 144);
-
+		
 		const socket = await io("localhost:3000");
 		socket.on("connection");
 		socket.emit("createGBCInstance", {rom:"<%- rom; %>"});
 
 		socket.on("frame", async function(data)
 		{
+			// update screen
 			for (var i=0; i < data.screen.length; i++)
 				ctx_data.data[i] = data.screen[i];
 			ctx.putImageData(ctx_data, 0, 0);
@@ -25,8 +26,8 @@
 			"39":"right",
 			"38":"up",
 			"40":"down",
-			"90":"a",
-			"88":"b",
+			"88":"a",
+			"90":"b",
 			"13":"start",
 			"32":"select"
 		};

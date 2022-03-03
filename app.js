@@ -165,7 +165,10 @@ io.on("connection", async function(soc){
 
 		async function doFrame()
 		{
-			soc.emit("frame", {screen: await gbc.GetFrame(soc.id)});
+			soc.emit("frame", {
+				screen: await gbc.GetFrame(soc.id),
+				audio: await gbc.GetAudio(soc.id)
+			});
 		}
 	});
 

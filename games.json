@@ -4,8 +4,8 @@
 			"name": "Super Monky Ball",
 			"file": "smb.ejs",
 			"image": "HomePage/puma.png",
-			"genre": "Add Genre",
-			"description": "Add a Description"
+			"genre": "3D Platformer",
+			"description": "your are a a monky in a opaque ball and it is super"
 		},
 		{
 			"name": "Conway's Game of Life",
@@ -18,8 +18,15 @@
 			"name": "Pokemon Crystal",
 			"file": "pokemonCrystal.ejs",
 			"image": "HomePage/puma.png",
-			"genre": "Add Genre",
-			"description": "Add a Description"
+			"genre": "Pokemon",
+			"description": "it just pokemon crystal"
+		},
+		{
+			"name": "Mario Land",
+			"file": "marioland.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Mario",
+			"description": "it just mario"
 		},
 		{
 			"name": "Space Shooter",
