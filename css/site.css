@@ -239,3 +239,15 @@ body {
  .UnityGame{
   height: 45rem
  }
+
+ .GameInstructions{
+  display: flex;
+  flex-direction: column;
+ }
+
+ .top-bottom{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 10% 0% 3% 5%;
+ }

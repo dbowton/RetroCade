@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 
 <html>
-	<head>
-		<%- include('gameboyTemplateHead', {rom:"PokemonCrystal.gbc"}) %>
-	</head>
-	<body>
-		<%- include('../PageNavBar') %>
+
+<head>
+	<%- include('gameboyTemplateHead', {rom:"PokemonCrystal.gbc"}) %>
+</head>
+
+<body>
+	<%- include('../PageNavBar') %>
+	<div class="top-bottom">
 		<%- include('gameboyTemplateBody') %>
-		<%- include('../Footer') %>
-	</body>
+		<div class="GameInstructions">
+			<h3>Game Controls</h3>
+			<p>
+				Z = A button<br>
+				X = B button<br>
+				Enter = Start<br>
+				Shift = Select<br>
+				Arrow Keys to Move
+			</p>
+		</div>
+	</div>
+	<%- include('../Footer') %>
+</body>
+
 </html>
