@@ -49,6 +49,17 @@ async function GetFrame(user)
 	return instance.game.getScreen();
 }
 
+async function GetAudio(user)
+{
+	let instance = await FindInstance(user);
+	let audio = instance.game.getAudio();
+	let audioLoop = [];
+	for (let i = 0; i < 705; i+=2) // mono
+		audioLoop.push(audio[i]);
+
+	return audioLoop;
+}
+
 async function KeyDown(user, key)
 {
 	let instance = await FindInstance(user);
@@ -69,6 +80,7 @@ module.exports = {
 	CreateGBCInstance,
 	RemoveGBCInstance,
 	GetFrame,
+	GetAudio,
 	KeyDown,
 	KeyUp
 }
