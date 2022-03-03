@@ -29,6 +29,13 @@
 			"description": "it just mario"
 		},
 		{
+			"name": "Legend of Zelda - Links Awakening",
+			"file": "zeldaLinksAwakening.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Mario",
+			"description": "it just mario"
+		},
+		{
 			"name": "Space Shooter",
 			"file": "SpaceShooter.ejs",
 			"image": "HomePage/puma.png",
