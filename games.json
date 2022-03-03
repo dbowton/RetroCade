@@ -8,6 +8,13 @@
 			"description": "Add a Description"
 		},
 		{
+			"name": "Conway's Game of Life",
+			"file": "ConwaysGameofLife.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "Slice of Life",
+			"description": "Make and watch cells live with the classic rules of Conway!!!"
+		},
+		{
 			"name": "Pokemon Crystal",
 			"file": "pokemonCrystal.ejs",
 			"image": "HomePage/puma.png",
