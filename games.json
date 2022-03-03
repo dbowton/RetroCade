@@ -36,11 +36,18 @@
 			"description": "Manage a Casino and work your way to becoming the richest person in the world"
 		},
 		{
-			"name": "Breakout",
-			"file": "breakout.ejs",
-			"image": "HomePage/puma.png",
-			"genre": "Arcade",
-			"description": "Round after round of intense brick breaking action"
+			"name": "Wordle",
+			"file": "Wordle.ejs",
+			"image":"HomePage/puma.png",
+			"genre":"Big brain",
+			"description":"Word guessing game"
+		},
+		{
+			"name":"Breakout",
+			"file":"breakout.ejs",
+			"image":"HomePage/puma.png",
+			"genre":"Arcade",
+			"description" : "Round after round of intense brick breaking action"
 		},
 		{
 			"name": "Space Invaders",
