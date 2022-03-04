@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
-        <link rel="stylesheet" href="/css/Wordle.css"/>
+        <%- include('../cdns.ejs')%>
+        <%- include('../PageNavBar.ejs')%>
     </head>
     
     <body>
@@ -16,7 +16,13 @@
             <div class="tile-container"></div>
             <div class="key-container"></div>
         </div>
-
+        
         <script src="/js/Wordle.js"></script>
     </body>
-</html>
+    <footer>
+        <%- include('../Footer.ejs')%>
+        <link rel="stylesheet" href="/css/Wordle.css"/>
+    </footer>
+    </html>
+    
+    

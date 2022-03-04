@@ -81,6 +81,20 @@ const handleClick = (letter) => {
     }
 }
 
+const KeyPushed = (letter) => {
+    if (!isGameOver) {
+        if (letter === '«') {
+            deleteLetter()
+            return
+        }
+        if (letter === 'ENTER') {
+            checkRow()
+            return
+        }
+        addLetter(letter)
+    }
+}
+
 const addLetter = (letter) => {
     if (currentTile < 5 && currentRow < 6) {
         const tile = document.getElementById('guessRow-' + currentRow + '-tile-' + currentTile)
@@ -170,7 +184,3 @@ const flipTile = () => {
 }
 
 
-//<!--<%- include('../Footer.ejs')%> -->
-
-//<!--<%- include('../cdns.ejs')%>
-//<%- include('../PageNavBar.ejs')%>-->
