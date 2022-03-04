@@ -2,9 +2,13 @@
 <html lang="en-us">
 	<head>
 		<title>Space Shooter</title>
-		<%- include('unityTemplateHead', {buildFolder: "/unityBuilds/SpaceShooter"}); %>
+		<%- include('unityTemplateHead', {buildFolder: "/unityBuilds/spaceShooter"}); %>
 	</head>
 	<body>
-		<%- include('unityTemplateBody') %>
+		<%- include('../PageNavBar') %>
+		<div class="UnityGame">
+			<%- include('unityTemplateBody', {name:"SpaceShooter"}) %>
+		</div>
+		<%- include('../Footer') %>
 	</body>
 </html>
