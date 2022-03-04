@@ -15,6 +15,13 @@
 			"description": "Make and watch cells live with the classic rules of Conway!!!"
 		},
 		{
+			"name": "games xd hahahahhaha",
+			"file": "ConwaysGameofLife.ejs",
+			"image": "HomePage/puma.png",
+			"genre": "XD",
+			"description": "Dynamic Container for games pages and game library here."
+		},
+		{
 			"name": "Pokemon Crystal",
 			"file": "pokemonCrystal.ejs",
 			"image": "HomePage/puma.png",
