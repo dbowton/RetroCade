@@ -1,4 +1,10 @@
 
+/*
+    Things to Fix:
+        Incrimenting of cost for each item
+        Think of More Updates
+*/
+
 var chips = 0;
 
 var formatter = new Intl.NumberFormat('en-US', {
@@ -15,8 +21,8 @@ var roulOwned = 0;
 var updatesOwned = 0;
 
 var lottoCost = 5;
-var slotsCost = 25;
-var pokerCost = 625;
+var slotsCost = 50;
+var pokerCost = 150;
 var bljkCost = 1250;
 var roulCost = 5000;
 
@@ -63,17 +69,32 @@ function theUpdate() {
     //update the Money and cost of each item
     document.getElementById("Money").innerHTML = chipsFormatted;
 
-    document.getElementById("btn").innerHTML = "Lotto! $" + lottoCost + "\nOwned: " + lottoOwned;
+    document.getElementById("btn").innerHTML = "Lotto! $" + lottoCost + "\nOwned: " + lottoOwned + " Makes: $" + (1 * (lottoOwned + 1)) + "/s";
 
-    document.getElementById("btn1").innerHTML = "Slots! $" + slotsCost + "\nOwned: " + slotsOwned;
+    document.getElementById("btn1").innerHTML = "Slots! $" + slotsCost + "\nOwned: " + slotsOwned + " Makes: $" + (3 * (slotsOwned + 1)) + "/s";
 
-    document.getElementById("btn2").innerHTML = "Poker! $" + pokerCost + "\nOwned: " + pokerOwned;
+    document.getElementById("btn2").innerHTML = "Poker! $" + pokerCost + "\nOwned: " + pokerOwned + " Makes: $" + (5 * (pokerOwned + 1)) + "/s";
 
-    document.getElementById("btn3").innerHTML = "BlackJack! $" + bljkCost + "\nOwned: " + bljkOwned;
+    document.getElementById("btn3").innerHTML = "BlackJack! $" + bljkCost + "\nOwned: " + bljkOwned + " Makes: $" + (7 * (bljkOwned + 1)) + "/s";
 
-    document.getElementById("btn4").innerHTML = "Roulette! $" + roulCost + "\nOwned: " + roulOwned;
+    document.getElementById("btn4").innerHTML = "Roulette! $" + roulCost + "\nOwned: " + roulOwned + " Makes: $" + (9 * (roulOwned + 1)) + "/s";
 
-    document.getElementById("btn5").innerHTML = "Update! $" + updateCost;
+    if (updatesOwned == 0) {
+        document.getElementById("btn5").innerHTML = "Update! $" + updateCost + " New Idle Machines";
+    }
+    if (updatesOwned == 1) {
+        document.getElementById("btn5").innerHTML = "Update! $" + updateCost + " New Carpet";
+    }
+    if (updatesOwned == 2) {
+        document.getElementById("btn5").innerHTML = "Update! $" + updateCost + " New Location";
+    }
+
+    if (updatesOwned >= 3) {
+        document.getElementById("btn5").style.backgroundColor = "#A21715";
+        document.getElementById("btn5").style.borderColor = "#A21715";
+    }
+
+    //document.getElementById("btn5").innerHTML = "Update! $" + updateCost;
 
     if (chips < lottoCost) {
         document.getElementById("btn").setAttribute("disabled", "disabled");
