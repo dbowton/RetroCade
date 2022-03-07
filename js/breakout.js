@@ -231,7 +231,8 @@ function checkCollision()
 
 			if(mx * mx + my * my <= (BALL_RADIUS * BALL_RADIUS))
 			{
-				collided(x); dy = -dy; dx = -dx; return;
+				collided(x); 
+				dy = -dy; dx = -dx; return;
 			}
 		})
 }

@@ -7,24 +7,26 @@ function setup()
 {
 	c.width = window.innerWidth;
 	c.height = window.innerHeight - 150;
-
-	ctx.font = "65px Arial";
-	ctx.fillText("Works Kinda", (c.width - ctx.measureText("Works Kinda").width) / 2, c.height / 2);
 }
 
 let player = { x:20, y:c.width-c.width/3*2, w:50, h:30, color:"green", speed:4 }
+let enemies = [];
+let playerProjectiles = [];
+let enemyProjectiles = [];
+
 let gameData = 
-{ 
-    initEnemiesHorizontal:8, initEnemiesVerticle:6,
-    screenBuffer:20, 
-    playerWidth:20, playerHeight:15, 
-    enemyWidth:15, enemyHeight:15, enemyBuffer:20 
+{
+	initEnemiesHorizontal:8, initEnemiesVerticle:6,
+	screenBuffer:20, 
+	enemyWidth:15, enemyHeight:15, enemyBuffer:20,
+	enemySpeed:4, enemyDrop:10,
+	projectileSpeed:5,
+	deathLine:player.y-c.height/10,
+	playerFireRate:100, playerFireTimer:0,
+	enemyColors:["red", "orange", "green", "blue", "purple"]
 }
 
-let enemySpeed = 4;
-
-let projectiles = [];
-let enemies = [];
+let isPlaying = false;
 
 class gameObject
 {
@@ -41,12 +43,12 @@ class gameObject
 start();
 function start()
 {
-    enemiesHorizontal = gameData.initEnemiesHorizontal;
-    enemiesVerticle = gameData.initEnemiesVerticle;
+	enemiesHorizontal = gameData.initEnemiesHorizontal;
+	enemiesVerticle = gameData.initEnemiesVerticle;
 
-    makeEnemies(enemiesHorizontal, enemiesVerticle);
+	makeEnemies(enemiesHorizontal, enemiesVerticle);
+	isPlaying = true;
 }
-
 
 window.onkeydown = function(e)
 {
@@ -60,62 +62,48 @@ window.onkeydown = function(e)
 		case 39:
 			player.x = Math.min(player.x + player.speed, c.width - gameData.screenBuffer - player.w);
 			break;
-		case 32:
-			fire();
-			break;
 		default:
 			break;
 	}
 }
 
+window.onmousedown = function(e)
+{
+	fire();
+}
+
 function fire()
 {
+	if(gameData.playerFireTimer < gameData.playerFireRate) return;
 
+	playerProjectiles.push(new gameObject(player.x + player.w / 2, player.y, "black", 5, 10));
+
+	gameData.playerFireTimer = 0;
 }
 
 function makeEnemies(verticle, horizontal)
 {
-    enemies = [];
-    for(let i = 0; i < verticle; i++)
-    {
-        for(let j = 0; j < horizontal; j++)
-        {
-            ctx.beginPath();
+	enemies = [];
+	for(let i = 0; i < verticle; i++)
+	{
+		for(let j = 0; j < horizontal; j++)
+		{
+			ctx.beginPath();
 
-			switch(i % 5)
-			{
-				case 0:
-					color = "red";
-					break;
-				case 1:
-					color = "orange";
-					break;
-				case 2:
-					color = "yellow";
-					break;
-				case 3:
-					color = "blue";
-					break;
-				case 4:
-					color = "purple";
-					break;
-				default:
-					color = "black";
-					break;
-			}
+			color = gameData.enemyColors[i % gameData.enemyColors.length]
 
 			var x = (gameData.screenBuffer + ((gameData.enemyBuffer + gameData.enemyWidth) * j));
 			var y = (gameData.screenBuffer + ((gameData.enemyBuffer + gameData.enemyHeight) * i));
-            
-            enemies.push(new gameObject(x, y, color, gameData.enemyWidth, gameData.enemyHeight));
-        }
-    }
+
+			enemies.push(new gameObject(x, y, color, gameData.enemyWidth, gameData.enemyHeight));
+		}
+	}
 }
 
 gameLoop();
 function gameLoop()
 {
-	if(true)
+	if(isPlaying)
 	{
 		draw();
 		update();
@@ -125,9 +113,22 @@ function gameLoop()
 
 function draw()
 {
-    ctx.clearRect(0, 0, c.width, c.height);
-    enemies.forEach(x => { drawEnemy(x); });
+	ctx.clearRect(0, 0, c.width, c.height);
+	drawDeathLine();
+	enemies.forEach(x => { drawEnemy(x); });
 	drawPlayer();
+	drawProjectiles();
+}
+
+function drawDeathLine()
+{
+	drawBrick(0, gameData.deathLine, c.width, 2, "black");
+}
+
+function drawProjectiles()
+{
+	playerProjectiles.forEach(x => { drawBrick(x.x, x.y, x.w, x.h, x.color); });
+	enemyProjectiles.forEach(x => { drawBrick(x.x, x.y, x.w, x.h, x.color); });
 }
 
 function drawPlayer()
@@ -139,13 +140,11 @@ function drawPlayer()
 function drawEnemy(x)
 {
 	drawBrick(x.x, x.y, x.w, x.h, x.color);
-//	drawBrick(x.x, x.y - 4 * x.h / 8, x.w / 11, x.h / 11 * 3, "green");
-//	drawBrick(x.x + x.w / 11, x.y - 4 * x.h / 8);
 }
 
 function drawBrick(x, y, w, h, color)
 {
-    ctx.beginPath(); 
+	ctx.beginPath(); 
 	ctx.fillStyle = color; 
 	ctx.fillRect(x, y, w, h); 
 	ctx.stroke();
@@ -153,36 +152,96 @@ function drawBrick(x, y, w, h, color)
 
 function update()
 {
-    updateEnemies();
+	gameData.playerFireTimer = Math.min(gameData.playerFireTimer + 1, gameData.playerFireRate);
+	player.color = (gameData.playerFireTimer < gameData.playerFireRate) ? "blue" : "green";
+
+	updateEnemies();
+	updateProjectiles();
+	checkLoss();
+}
+
+function checkLoss()
+{
+	let loss = false;
+	enemies.forEach(x => { if(x.y + x.h > gameData.deathLine) loss = true; });
+	if(loss)
+	{
+		isPlaying = false;
+		ctx.clearRect(0, 0, c.width, c.height);
+		ctx.fillStyle = "black";
+		ctx.font = "50px Arial";
+		ctx.fillText("Game Over", (c.width - ctx.measureText("Game Over").width) / 2, c.height / 2 - 60);
+	}
+}
+
+function updateProjectiles()
+{
+	playerProjectiles.forEach(x => 
+		{
+			x.y -= gameData.projectileSpeed;
+
+			if(x.y < 0) removePlayerProjectile(x);
+
+			enemies.forEach(y => 
+				{
+					if(checkCollision(x, y))
+					{
+						removePlayerProjectile(x);
+						removeEnemy(y);
+					}
+				});
+		});
+}
+
+function checkCollision(x, y)
+{
+	if(x.x + x.w < y.x) return false;
+	if(x.x > y.x + y.w) return false;
+
+	if(x.y + x.h < y.y) return false;
+	if(x.y > y.y + y.h) return false;
+
+	return true;
+}
+
+function removeEnemy(x)
+{
+	let index = enemies.indexOf(x);
+	if (index > -1) {
+		enemies.splice(index, 1);
+	}
+}
+
+function removePlayerProjectile(x)
+{
+	let index = playerProjectiles.indexOf(x);
+	if (index > -1) {
+		playerProjectiles.splice(index, 1);
+	}
+}
+
+function removeEnemyProjectile(x)
+{
+	let index = enemyProjectiles.indexOf(x);
+	if (index > -1) {
+		enemyProjectiles.splice(index, 1);
+	}
 }
 
 function updateEnemies()
 {
-    let down = false;
-    enemies.forEach(x => 
+	let down = false;
+	enemies.forEach(x => 
 		{ 
-			if(enemySpeed > 0 && x.x + x.w > c.width - gameData.screenBuffer && !down)
+			if(!down && (gameData.enemySpeed > 0 && x.x + x.w > c.width - gameData.screenBuffer) || (gameData.enemySpeed < 0 && x.x < gameData.screenBuffer))
 			{ 
-				enemySpeed = -enemySpeed; 
-				down = true;
-			}
-			else if(enemySpeed < 0 && x.x < gameData.screenBuffer && !down)
-			{
-				enemySpeed = -enemySpeed; 
+				gameData.enemySpeed = -gameData.enemySpeed; 
 				down = true;
 			}
 		});
 
-   if(down)
-    {
-        enemies.forEach(x => {
-            x.y += 10;
-        });
-    }
-    else
-    {
-        enemies.forEach(x => {
-            x.x += enemySpeed;
-        });
-    }
+	if(down)
+		enemies.forEach(x => { x.y += gameData.enemyDrop; });
+	else
+		enemies.forEach(x => { x.x += gameData.enemySpeed; });
 }
