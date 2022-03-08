@@ -1,4 +1,3 @@
-//This is breakout code      
 var c = document.getElementById("invadersCanvas");
 var ctx = c.getContext("2d");
 
@@ -9,20 +8,21 @@ function setup()
 	c.height = window.innerHeight - 150;
 }
 
-let player = { x:20, y:c.width-c.width/3*2, w:50, h:30, color:"green", speed:4 }
+let player = { x:20, y:c.width-c.width/3*2, w:50, h:30, color:"green", speed:8 }
 let enemies = [];
 let playerProjectiles = [];
 let enemyProjectiles = [];
 
 let gameData = 
 {
-	initEnemiesHorizontal:8, initEnemiesVerticle:6,
+	enemiesHorizontal:8, enemiesVerticle:6,
 	screenBuffer:20, 
-	enemyWidth:15, enemyHeight:15, enemyBuffer:20,
-	enemySpeed:4, enemyDrop:10,
-	projectileSpeed:5,
+	enemyWidth:30, enemyHeight:30, enemyBuffer:20,
+	enemySpeed:2, enemyDrop:50,
+	projectileSpeed:8,
 	deathLine:player.y-c.height/10,
-	playerFireRate:100, playerFireTimer:0,
+	playerFireRate:50, playerFireTimer:0,
+	enemyFireTimer:100,
 	enemyColors:["red", "orange", "green", "blue", "purple"]
 }
 
@@ -43,11 +43,9 @@ class gameObject
 start();
 function start()
 {
-	enemiesHorizontal = gameData.initEnemiesHorizontal;
-	enemiesVerticle = gameData.initEnemiesVerticle;
-
-	makeEnemies(enemiesHorizontal, enemiesVerticle);
+	makeEnemies(gameData.enemiesVerticle, gameData.enemiesHorizontal);
 	isPlaying = true;
+	gameLoop();
 }
 
 window.onkeydown = function(e)
@@ -88,8 +86,6 @@ function makeEnemies(verticle, horizontal)
 	{
 		for(let j = 0; j < horizontal; j++)
 		{
-			ctx.beginPath();
-
 			color = gameData.enemyColors[i % gameData.enemyColors.length]
 
 			var x = (gameData.screenBuffer + ((gameData.enemyBuffer + gameData.enemyWidth) * j));
@@ -100,15 +96,14 @@ function makeEnemies(verticle, horizontal)
 	}
 }
 
-gameLoop();
 function gameLoop()
 {
 	if(isPlaying)
 	{
 		draw();
 		update();
+		window.requestAnimationFrame(gameLoop);
 	} 
-	window.requestAnimationFrame(gameLoop);
 }
 
 function draw()
@@ -153,6 +148,7 @@ function drawBrick(x, y, w, h, color)
 function update()
 {
 	gameData.playerFireTimer = Math.min(gameData.playerFireTimer + 1, gameData.playerFireRate);
+	gameData.enemyFireTimer = Math.max(gameData.enemyFireTimer - 1, 0);
 	player.color = (gameData.playerFireTimer < gameData.playerFireRate) ? "blue" : "green";
 
 	updateEnemies();
@@ -164,14 +160,19 @@ function checkLoss()
 {
 	let loss = false;
 	enemies.forEach(x => { if(x.y + x.h > gameData.deathLine) loss = true; });
-	if(loss)
-	{
-		isPlaying = false;
-		ctx.clearRect(0, 0, c.width, c.height);
-		ctx.fillStyle = "black";
-		ctx.font = "50px Arial";
-		ctx.fillText("Game Over", (c.width - ctx.measureText("Game Over").width) / 2, c.height / 2 - 60);
-	}
+	if(loss) GameOver(false);
+	if(enemies.length == 0) GameOver(true);
+}
+
+function GameOver(won)
+{
+	isPlaying = false;
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.fillStyle = "black";
+	ctx.font = "50px Arial";
+
+	var txt = (won) ? "Victory" : "Game Over";
+	ctx.fillText(txt, (c.width - ctx.measureText(txt).width) / 2, c.height / 2 - 60);
 }
 
 function updateProjectiles()
@@ -190,6 +191,18 @@ function updateProjectiles()
 						removeEnemy(y);
 					}
 				});
+		});
+
+	enemyProjectiles.forEach(x => 
+		{
+			x.y += gameData.projectileSpeed;
+
+			if(x.y > c.height) removeEnemyProjectile(x);
+
+			if(checkCollision(x, player))
+			{
+				GameOver(false);
+			}
 		});
 }
 
@@ -230,6 +243,13 @@ function removeEnemyProjectile(x)
 
 function updateEnemies()
 {
+	if(gameData.enemyFireTimer <= 0)
+	{
+		var enemy = enemies[Math.floor(Math.random() * enemies.length)];
+		enemyProjectiles.push(new gameObject(enemy.x, enemy.y, "red", 5, 10));
+		gameData.enemyFireTimer = 100;
+	}
+
 	let down = false;
 	enemies.forEach(x => 
 		{ 

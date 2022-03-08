@@ -238,7 +238,7 @@ function checkCollision()
 				collided(x); 
 				dy = -dy; dx = -dx; return;
 			}
-		})
+		});
 }
 
 function collided(brick)
