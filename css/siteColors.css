@@ -1,31 +1,54 @@
-.indexBar {
-    background-color: rgb(35, 39, 42 / 90%);
-}
-
-.gameList {
-    color: #CCCCCC;
-}
-
 .titleColor{
-    background-color: rgb(35, 39, 42 / 0%);
-    color: #CCCCCC;
+    color: #ccc;
 }
 
 .btnColor{
-    background-color: rgb(35, 39, 42 / 90%);
-    color: #CCCCCC;
+    color: #57F2CB;
+}
+
+.background{
+    background-color: #2c2f33;
+}
+
+#navBar{
+    border-bottom: #57F2CB solid 4px;
+    background-color: #1C1F21;
+}
+
+#footerBar{
+    border-top: #57F2CB solid 4px;
+    background-color: #1C1F21;
+}
+
+/* add shadow to cards */
+#cardPadding{
+    background-color: #1C1F21;
+    /* border: #0ab9e6 solid 4px; */
+}
+
+.signoutBtn{
+    background-color: #2c2f33;
+    color: #ccc;
+    border: #57F2CB solid 2px;
+}
+
+#search{
+    border: #57F2CB solid 2px;
+    background-color: #171717;
+    color: #ccc;
+}
+
+.GameInstructions{
+    color: #ccc;
 }
 
 /*
-    DarkPink : #501F3A, (80, 31, 58)
-    BrightPink : #CB2D6F, (203, 45, 111)
+    Light Black : #2c2f33
+    Black : #23272a
 
-    White : #CCCCCC, (204, 204, 204)
-    Black : #23272A, (35, 39, 42)
+        CHANGE HUE
+    Dark Purple : #404eed
+    Purple : #5865f2 #57F2CB
 
-    BrightBlue : #14A098, (20, 160, 152)
-    DarkBlue : #0F292F, (15, 41, 47)
-
-    Black background with white text for peak gamer aesthetic
-    Pinks and Blues using as accents and borders
+    Gray : #99aab5
 */
