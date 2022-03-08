@@ -152,13 +152,12 @@ function moveBall()
 	
 	if(ball_x - BALL_RADIUS >= paddle_x && ball_x + BALL_RADIUS <= paddle_x + paddle_width && ball_y + BALL_RADIUS >= paddle_y && ball_y - BALL_RADIUS < paddle_y + paddle_height)
 	{
-		var angle = ((paddle_x + paddle_width / 2) - ball_x) / (paddle_width / 2);
+		var distToPaddle = ball_x - (paddle_x + (paddle_width/2));
+		var angle = ((distToPaddle * 2) / paddle_width) * 1;
 		
-		dx = Math.cos(angle) * ball_speed;
+		dx = Math.sin(angle) * ball_speed;
 
-		if(ball_x < paddle_x + paddle_width / 2) dx = -dx;
-
-		dy = -Math.abs(Math.sin(angle) * ball_speed);
+		dy = -Math.abs(Math.cos(angle) * ball_speed);
 	}
 
 	ball_x += dx;
@@ -170,6 +169,11 @@ function drawPaddle()
 	ctx.beginPath();
 	ctx.fillRect(paddle_x, paddle_y, paddle_width, paddle_height);
 	ctx.stroke();
+
+	ctx.beginPath();
+	ctx.fillStyle = "red";
+	ctx.arc(paddle_x+(paddle_width/2), paddle_y, 5, 0, Math.PI * 2, false);
+	ctx.fill();
 }
 
 function makeBricks()
