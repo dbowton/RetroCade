@@ -19,10 +19,10 @@ $(document).ready(function () {
 
 	});
 	
-	$('#search').focusout(function () {
+	$('#NavSearchBar').focusout(function () {
 		$('#result').hide();
 	});
-	$('#search').focus(function () {
+	$('#NavSearchBar').focus(function () {
 		$('#result').show();
 
 	});
