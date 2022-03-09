@@ -2,6 +2,7 @@ $(document).ready(function () {
 	$.ajaxSetup({
 		cache: false
 	});
+
 	$('#search').keyup(async function () {
 		$('#result').html('');
 		$('#state').val('');
@@ -15,11 +16,23 @@ $(document).ready(function () {
 					" height="40" width="40" class="img-thumbnail" /> ${value.name} <div>`);
 			}
 		});
-	});
 
-	$('#result').on('click', 'li', function () {
+	});
+	
+	$('#search').focusout(function () {
+		$('#result').hide();
+	});
+	$('#search').focus(function () {
+		$('#result').show();
+
+	});
+	
+	$('#result').focus('click', 'li', function () {
 		var click_text = $(this).text().split('|');
 		$('#search').val($.trim(click_text[0]));
 		$("#result").html('');
 	});
+	
+
+
 });
