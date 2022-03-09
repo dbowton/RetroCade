@@ -6,10 +6,20 @@
 	<%- include('gameboyTemplateHead', {rom:"Legend of Zelda Link's Awakening.gbc"}) %>
 </head>
 
-<body>
+<body class="background">
 	<%- include('../PageNavBar') %>
 	<div class="top-bottom">
 		<%- include('gameboyTemplateBody') %>
+		<div class="GameInstructions">
+			<h3>Game Controls</h3>
+			<p>
+				Z = B button<br>
+				X = A button<br>
+				Enter = Start<br>
+				Shift = Select<br>
+				Arrow Keys to Move
+			</p>
+		</div>
 	</div>
 	<%- include('../Footer') %>
 </body>
