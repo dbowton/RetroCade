@@ -8,7 +8,7 @@ function setup()
 	c.height = window.innerHeight - 150;
 }
 
-let player = { x:20, y:c.width-c.width/3*2, w:50, h:30, color:"green", speed:8 }
+let player = { x:20, y:c.height-c.height/10, w:50, h:30, color:"green", speed:8 }
 let enemies = [];
 let playerProjectiles = [];
 let enemyProjectiles = [];
@@ -18,11 +18,10 @@ let gameData =
 	enemiesHorizontal:8, enemiesVerticle:6,
 	screenBuffer:20, 
 	enemyWidth:30, enemyHeight:30, enemyBuffer:20,
-	enemySpeed:2, enemyDrop:50,
-	projectileSpeed:8,
-	deathLine:player.y-c.height/10,
+	enemySpeed:2, enemyDrop:25,
+	playerProjectileSpeed:8, enemyProjectileSpeed:6,
 	playerFireRate:50, playerFireTimer:0,
-	enemyFireTimer:100,
+	enemyFireRate:100, enemyFireTimer:0,
 	enemyColors:["red", "orange", "green", "blue", "purple"]
 }
 
@@ -43,6 +42,9 @@ class gameObject
 start();
 function start()
 {
+	player.x = c.width / 2 - player.w / 2;
+	playerProjectiles = [];
+	enemyProjectiles = [];
 	makeEnemies(gameData.enemiesVerticle, gameData.enemiesHorizontal);
 	isPlaying = true;
 	gameLoop();
@@ -67,7 +69,9 @@ window.onkeydown = function(e)
 
 window.onmousedown = function(e)
 {
-	fire();
+	if(isPlaying)
+		fire();
+	else start();
 }
 
 function fire()
@@ -109,15 +113,9 @@ function gameLoop()
 function draw()
 {
 	ctx.clearRect(0, 0, c.width, c.height);
-	drawDeathLine();
 	enemies.forEach(x => { drawEnemy(x); });
 	drawPlayer();
 	drawProjectiles();
-}
-
-function drawDeathLine()
-{
-	drawBrick(0, gameData.deathLine, c.width, 2, "black");
 }
 
 function drawProjectiles()
@@ -159,7 +157,7 @@ function update()
 function checkLoss()
 {
 	let loss = false;
-	enemies.forEach(x => { if(x.y + x.h > gameData.deathLine) loss = true; });
+	enemies.forEach(x => { if(x.y + x.h > player.y) loss = true; });
 	if(loss) GameOver(false);
 	if(enemies.length == 0) GameOver(true);
 }
@@ -173,15 +171,28 @@ function GameOver(won)
 
 	var txt = (won) ? "Victory" : "Game Over";
 	ctx.fillText(txt, (c.width - ctx.measureText(txt).width) / 2, c.height / 2 - 60);
+
+	ctx.font = "25px Arial";
+	ctx.fillText("Click to Play Again", (c.width - ctx.measureText("Click to Play Again").width) / 2, c.height / 2 - 20);
 }
 
 function updateProjectiles()
 {
 	playerProjectiles.forEach(x => 
 		{
-			x.y -= gameData.projectileSpeed;
+			x.y -= gameData.playerProjectileSpeed;
 
 			if(x.y < 0) removePlayerProjectile(x);
+
+			enemyProjectiles.forEach(y =>
+				{
+					if(checkCollision(x,y))
+					{
+						removePlayerProjectile(x);
+						removeEnemyProjectile(y);
+					}
+				});
+
 
 			enemies.forEach(y => 
 				{
@@ -195,7 +206,7 @@ function updateProjectiles()
 
 	enemyProjectiles.forEach(x => 
 		{
-			x.y += gameData.projectileSpeed;
+			x.y += gameData.enemyProjectileSpeed;
 
 			if(x.y > c.height) removeEnemyProjectile(x);
 
@@ -246,8 +257,8 @@ function updateEnemies()
 	if(gameData.enemyFireTimer <= 0)
 	{
 		var enemy = enemies[Math.floor(Math.random() * enemies.length)];
-		enemyProjectiles.push(new gameObject(enemy.x, enemy.y, "red", 5, 10));
-		gameData.enemyFireTimer = 100;
+		enemyProjectiles.push(new gameObject(enemy.x + enemy.w / 2, enemy.y + enemy.h , "red", 5, 10));
+		gameData.enemyFireTimer = gameData.enemyFireRate;
 	}
 
 	let down = false;
