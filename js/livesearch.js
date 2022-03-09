@@ -15,24 +15,14 @@ $(document).ready(function () {
 					`<a href="/games/${value.name}"><div><li class="list-group-item link-class">  <img src="/images/${value.image}
 					" height="40" width="40" class="img-thumbnail" /> ${value.name} <div>`);
 			}
+			$('#result').show();
 		});
-
+		
 	});
-	
-	$('#NavSearchBar').focusout(function () {
+
+	$('body').click(function(evt) {
+		if(evt.target.id == 'result')
+		return;
 		$('#result').hide();
-	});
-	$('#NavSearchBar').focus(function () {
-		$('#result').show();
-
-	});
-	
-	$('#result').focus('click', 'li', function () {
-		var click_text = $(this).text().split('|');
-		$('#search').val($.trim(click_text[0]));
-		$("#result").html('');
-	});
-	
-
-
+	})
 });
