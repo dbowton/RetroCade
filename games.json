@@ -68,7 +68,7 @@
 			"file": "spaceInvaders.ejs",
 			"image": "HomePage/Invaders.png",
 			"genre": "Arcade",
-			"description": ""
+			"description": "Defend the world from a wave of incoming aliens"
 		}
 	]
 }

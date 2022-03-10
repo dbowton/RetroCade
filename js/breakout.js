@@ -96,7 +96,11 @@ window.onmousedown = function()
 
 window.onmousemove = function(e)
 {
-	if(isPlaying && e.x >= paddle_width / 2 + SCREEN_BUFFER && e.x <= (c.width - SCREEN_BUFFER) - (paddle_width / 2)) paddle_x = e.x - paddle_width / 2;
+	if(isPlaying)
+	{
+		var location = Math.min(Math.max(e.x - paddle_width / 2, SCREEN_BUFFER), c.width - SCREEN_BUFFER - paddle_width);
+		paddle_x = location;	
+	}
 }
 
 function update()
