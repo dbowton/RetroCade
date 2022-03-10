@@ -34,6 +34,7 @@ let paddle_x = ((c.width / 2) - (paddle_width / 2));
 let paddle_y = (c.height - paddle_height - SCREEN_BUFFER);
 
 let isPlaying = false;
+let isPaused = true;
 
 let bricks = [];
 let working;
@@ -49,6 +50,10 @@ class brick
 	}
 }
 
+function delay(time) {
+	return new Promise(resolve => setTimeout(resolve, time));
+  }
+
 function start()
 {
 	BRICK_WIDTH = (((c.width - (2 * SCREEN_BUFFER)) / BRICKS_HORIZONTAL) - BRICK_BUFFER);
@@ -60,6 +65,13 @@ function start()
 	ball_x = Math.floor(c.width / 2);
 	ball_y = Math.floor((c.height / 4) * 3);
 	makeBricks();
+
+	isPaused = true;
+	delay(1000).then(() => 
+	{
+		isPaused = false;
+	});
+
 	isPlaying = true;
 }
 
@@ -68,9 +80,10 @@ function gameLoop()
 {
 	if(isPlaying)
 	{
+		if(!isPaused)
+			update();
 		draw();
-		update();
-	} 
+	}
 	window.requestAnimationFrame(gameLoop);
 }
 
@@ -88,9 +101,11 @@ window.onmousemove = function(e)
 
 function update()
 {
+
 	moveBall();
 	checkCollision();
 	checkWin();
+	
 }
 
 function checkWin()
@@ -119,16 +134,19 @@ function checkWin()
 		BRICKS_VERTICAL = 1;
 		ball_speed = 4;
 		paddle_x = c.width / 2 - paddle_width / 2;
-		isPlaying = false; 
+		isPlaying = false;
 	}
 }
 
 function draw()
 {
-	ctx.clearRect(0,0,c.width,c.height);
-	bricks.forEach(x => drawBrick(x));
-	drawPaddle();
-	drawBall();
+	if(isPlaying)
+	{
+		ctx.clearRect(0,0,c.width,c.height);
+		bricks.forEach(x => drawBrick(x));
+		drawPaddle();
+		drawBall();
+	}
 }
 
 function drawBrick(brick)
@@ -169,11 +187,6 @@ function drawPaddle()
 	ctx.beginPath();
 	ctx.fillRect(paddle_x, paddle_y, paddle_width, paddle_height);
 	ctx.stroke();
-
-	ctx.beginPath();
-	ctx.fillStyle = "red";
-	ctx.arc(paddle_x+(paddle_width/2), paddle_y, 5, 0, Math.PI * 2, false);
-	ctx.fill();
 }
 
 function makeBricks()
