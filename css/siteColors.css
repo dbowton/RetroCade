@@ -2,6 +2,10 @@
     color: #ccc;
 }
 
+#cardText{
+    color: #ccc;
+}
+
 .btnColor{
     color: #57F2CB;
 }
@@ -28,6 +32,12 @@
 
 .signoutBtn{
     background-color: #2c2f33;
+    color: #ccc;
+    border: #57F2CB solid 2px;
+}
+
+.btnSize{
+    background-color: #23272a;
     color: #ccc;
     border: #57F2CB solid 2px;
 }
