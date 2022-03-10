@@ -5,7 +5,7 @@
         Think of More Updates
 */
 
-var chips = 100000000;
+var chips = 0;
 
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
